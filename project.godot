@@ -14,6 +14,10 @@ config/name="Femovico"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameStateUtility="*res://Framework/Utility/GameStateUtility.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
