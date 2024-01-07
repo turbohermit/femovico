@@ -25,7 +25,7 @@ func initialize(p_root: Control) -> AFeature:
 # Creates and tracks Controller instaces from the Feature.
 func kickstart(p_controller: AController):
 	p_controller.m_root = m_root
-	p_controller.after_init()
+	p_controller.on_initialized()
 	m_controllers.append(p_controller)
 	return p_controller
 

@@ -15,7 +15,7 @@ func terminate():
 	on_terminate()
 
 # Called after _init and m_root is assigned.
-func after_init():
+func on_initialized():
 	pass
 
 # Called after terminate() for any custom cleanup implementation.
