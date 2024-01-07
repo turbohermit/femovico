@@ -13,16 +13,16 @@ func _ready():
 	var scene = FollowUpScene.instantiate()
 	add_child(scene)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Called every frame. 'p_delta' is the elapsed time since the previous frame.
+func _process(p_delta):
 	if Input.is_action_just_pressed ("ui_text_backspace"):
 		terminate_features()
 		start_features()
 	
-	if(GameStateUtility.Paused):
-		return
+	# If you want to implement Pausing the game easily, return here.
+	
 	for feature in m_features:
-		feature.update_tick(delta)
+		feature.update_tick(p_delta)
 
 func start_features():
 	var root = get_tree().get_current_scene()
