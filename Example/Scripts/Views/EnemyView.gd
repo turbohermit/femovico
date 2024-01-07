@@ -12,7 +12,7 @@ signal on_clicked(p_view: EnemyView)
 
 func update(p_model: EnemyModel):
 	Visual.modulate = HealthGradient.sample(p_model.NormalizedHealth)
-	Visual.position = p_model.pos
+	Visual.position = p_model.Position
 
 # Not a very beautiful way to collect input, don't do this at home kids!
 func _input(p_event):
