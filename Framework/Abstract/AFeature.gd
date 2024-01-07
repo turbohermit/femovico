@@ -29,9 +29,12 @@ func kickstart(p_controller: AController):
 	m_controllers.append(p_controller)
 	return p_controller
 
+# Call update_tick on tracked Controllers, then on tracked Views.
 func update_tick(p_deltaTime: float):
 	for controller in m_controllers:
 		controller.update_tick(p_deltaTime)
+	
+	m_viewCollection.update_tick(p_deltaTime)
 
 # Terminates all Views in the ViewCollection and then all tracked Controllers.
 func terminate():
