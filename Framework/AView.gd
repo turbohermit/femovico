@@ -1,7 +1,7 @@
-class_name AViewControl
-extends Control
+class_name AView
+extends Node
 
-signal on_terminated(p_view: AViewControl)
+signal on_terminated(p_view: AView)
 
 func _ready():
 	name = str(self, get_class()) 
