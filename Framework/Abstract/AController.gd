@@ -21,3 +21,6 @@ func on_initialized():
 # Called after terminate() for any custom cleanup implementation.
 func on_terminate():
 	pass
+
+func update_tick(p_deltaTime: float):
+	pass
