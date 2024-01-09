@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c87b7mxysjl62"]
+[gd_scene load_steps=5 format=3 uid="uid://c87b7mxysjl62"]
 
 [ext_resource type="Script" path="res://Example/Scripts/Views/EnemyView.gd" id="1_71lbc"]
 [ext_resource type="Texture2D" uid="uid://m736e55np51" path="res://icon.svg" id="2_n6uch"]
@@ -7,11 +7,20 @@
 offsets = PackedFloat32Array(0, 0.471074, 1)
 colors = PackedColorArray(0.159126, 1.78986e-07, 6.01634e-09, 1, 0.840328, 2.88785e-06, 1.44392e-06, 1, 1, 1, 1, 1)
 
-[node name="view_enemy" type="Node2D" node_paths=PackedStringArray("Visual")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmi3t"]
+size = Vector2(140, 138)
+
+[node name="view_enemy" type="Node2D" node_paths=PackedStringArray("Visual", "ClickableArea")]
 script = ExtResource("1_71lbc")
 Visual = NodePath("Visual")
+ClickableArea = NodePath("Visual/ClickableArea")
 HealthGradient = SubResource("Gradient_0q63b")
 
 [node name="Visual" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_n6uch")
+
+[node name="ClickableArea" type="Area2D" parent="Visual"]
+
+[node name="Shape" type="CollisionShape2D" parent="Visual/ClickableArea"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_jmi3t")
