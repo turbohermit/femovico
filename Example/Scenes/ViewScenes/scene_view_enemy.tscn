@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c87b7mxysjl62"]
+
+[ext_resource type="Script" path="res://Example/Scripts/Views/EnemyView.gd" id="1_71lbc"]
+[ext_resource type="Texture2D" uid="uid://m736e55np51" path="res://icon.svg" id="2_n6uch"]
+
+[sub_resource type="Gradient" id="Gradient_0q63b"]
+colors = PackedColorArray(0.509412, 1.2514e-06, 2.88785e-07, 1, 0.0964605, 1, 0.215066, 1)
+
+[node name="view_enemy" type="Node2D" node_paths=PackedStringArray("Visual")]
+script = ExtResource("1_71lbc")
+Visual = NodePath("Visual")
+HealthGradient = SubResource("Gradient_0q63b")
+
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_n6uch")
