@@ -4,12 +4,12 @@ class_name AFeature
 extends Resource
 func get_class_name(): return "AFeature"
 
-var m_root: Control
+var m_root: Node
 var m_viewCollection: ViewCollection
 var m_controllers: Array[AController]
 
 # Creates and initializes an instance of this Feature Resource and returns it.
-func initialize(p_root: Control) -> AFeature:
+func initialize(p_root: Node) -> AFeature:
 	var feature = self.duplicate()
 	
 	feature.m_root = p_root
