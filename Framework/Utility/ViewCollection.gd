@@ -4,7 +4,7 @@ class_name ViewCollection
 var m_views: Array[AView]
 
 # Creates a new empty view
-func kickstart_view(p_view: AView, p_parent: Control):
+func kickstart_view(p_view: AView, p_parent: Node):
 	m_views.append(p_view)
 	p_view.on_terminated.connect(view_terminated_received)
 	
@@ -12,7 +12,7 @@ func kickstart_view(p_view: AView, p_parent: Control):
 	return p_view as AView
 
 # Returns the first view of the type of input class name.
-func kickstart_view_scene(p_viewScene: PackedScene, p_parent: Control):
+func kickstart_view_scene(p_viewScene: PackedScene, p_parent: Node):
 	var scene = p_viewScene.instantiate()
 	if not scene is AView:
 		print(str("Trying to instantiate a View scene but the scene root is not a View: ", p_viewScene))

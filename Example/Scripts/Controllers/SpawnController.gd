@@ -13,12 +13,12 @@ var m_enemySceneView: PackedScene
 var m_viewToModel = {}
 
 func _init(p_spawnerResource: SpawnerModelResource, p_liveEnemiesModel: LiveEnemiesModel, p_enemySceneView: PackedScene):
-	p_enemySceneView = m_enemySceneView
+	m_enemySceneView = p_enemySceneView
 	m_liveEnemiesModel = p_liveEnemiesModel
 	m_spawnerResource = p_spawnerResource
 	
 	m_spawnerModel = SpawnerModel.new(p_spawnerResource)
-	m_spawnerResource.on_spawn.connect(on_spawn_received)
+	m_spawnerModel.on_spawn.connect(on_spawn_received)
 
 func update_tick(p_deltaTime: float):
 	m_spawnerModel.update_tick(p_deltaTime)
