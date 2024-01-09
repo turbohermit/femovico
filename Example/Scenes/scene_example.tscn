@@ -8,3 +8,5 @@
 [node name="FeatureInitializer" type="Node" parent="."]
 script = ExtResource("1_0wae2")
 StartupFeatures = Array[Resource("res://Framework/Abstract/AFeature.gd")]([ExtResource("2_r6ppa")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
