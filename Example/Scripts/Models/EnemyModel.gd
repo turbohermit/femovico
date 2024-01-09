@@ -8,6 +8,7 @@ var m_position: Vector2
 var m_origin: Vector2
 var m_speed: float
 var m_timeValue: float
+var m_scale: float
 
 var m_health: int
 var m_maxHealth: int
@@ -29,6 +30,10 @@ var Speed:
 	get:
 		return m_speed
 
+var Scale:
+	get:
+		return m_scale
+
 signal on_updated(p_model: EnemyModel)
 signal on_targeted(p_model: EnemyModel)
 signal on_knocked_out(p_model: EnemyModel)
@@ -37,6 +42,7 @@ func _init(p_resource: CreatureModelResource):
 	m_health = p_resource.Health
 	m_maxHealth = m_health
 	m_speed = p_resource.Speed
+	m_scale = p_resource.Scale
 
 # Typically Controllers should only call functions on Models.
 # The Model will then manipulate its own data accordingly.
