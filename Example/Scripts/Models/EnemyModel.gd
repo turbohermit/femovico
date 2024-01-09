@@ -5,9 +5,12 @@ func get_class_name(): return "EnemyModel"
 # It's good practice for Models to have strict public and private accessors.
 # This is to prevent Views or Controllers from manipulating data outside of their responsibility.
 var m_position: Vector2
+var m_origin: Vector2
+var m_speed: float
+var m_timeValue: float
+
 var m_health: int
 var m_maxHealth: int
-var m_speed: float
 
 # Typically Views should only Get data from Models, and never set any,
 var NormalizedHealth:
@@ -17,6 +20,14 @@ var NormalizedHealth:
 var Position:
 	get:
 		return m_position
+
+var Origin:
+	get:
+		return m_origin
+
+var Speed:
+	get:
+		return m_speed
 
 signal on_updated(p_model: EnemyModel)
 signal on_targeted(p_model: EnemyModel)
@@ -38,3 +49,13 @@ func take_damage(p_amount: int):
 
 func target():
 	on_targeted.emit(self)
+
+func move(p_deltaTime: float):
+	m_timeValue += m_speed * p_deltaTime
+	m_position = m_origin + (Vector2(sin(m_timeValue), cos(m_timeValue)) * 100)
+	on_updated.emit(self)
+
+func set_origin(p_point: Vector2):
+	m_position = p_point
+	m_origin = p_point
+	on_updated.emit(self)

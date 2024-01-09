@@ -4,6 +4,10 @@ func get_class_name(): return "LiveEnemiesModel"
 
 var m_enemies: Array[EnemyModel]
 
+var Enemies: Array[EnemyModel]:
+	get:
+		return m_enemies
+
 signal on_enemy_added(p_model: EnemyModel)
 
 var Count: int:

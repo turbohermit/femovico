@@ -20,3 +20,6 @@ func init_controllers():
 	kickstart(
 		SpawnController.new(SpawnerResource, liveEnemiesModel, EnemyViewScene)
 	)
+	kickstart(
+		MovementController.new(liveEnemiesModel)
+	)
