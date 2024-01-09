@@ -11,7 +11,9 @@ signal on_spawn
 
 func _init(p_resource: SpawnerModelResource):
 	m_spawnTime = p_resource.TimeBeforeSpawn
-	m_maxPickRange = p_resource.Creatures.size()
+	m_countdown = m_spawnTime
+	
+	m_maxPickRange = p_resource.Creatures.size() - 1
 	m_generator = RandomNumberGenerator.new()
 
 func pick_creature_index() -> int:

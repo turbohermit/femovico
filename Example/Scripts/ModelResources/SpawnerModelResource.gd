@@ -14,6 +14,10 @@ func get_class_name(): return "SpawnerModelResource"
 # So you don't accidentally change serialized values.
 # Having some functions to Get data in a specific way is fine though!
 func get_creature(p_index: int) -> CreatureModelResource:
+	if Creatures.size() == 0:
+		print(str("No creatures assigned!"))
+		return null
+	
 	if p_index < 0 or p_index >= Creatures.size():
 		print(str("Index ", p_index, " out of range"))
 		return null

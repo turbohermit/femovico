@@ -3,7 +3,7 @@
 class_name AController
 func get_class_name(): return "AController"
 
-var m_root: Control
+var m_root: Node
 var m_viewCollection: ViewCollection = ViewCollection.new()
 
 # Terminates all views in this controller's ViewCollection and unassigns local variables.
