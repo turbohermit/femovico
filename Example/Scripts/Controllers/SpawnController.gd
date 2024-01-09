@@ -24,6 +24,9 @@ func update_tick(p_deltaTime: float):
 	m_spawnerModel.update_tick(p_deltaTime)
 
 func on_spawn_received():
+	if m_liveEnemiesModel.Count >= m_spawnerResource.MaximumLivingSpawns:
+		return
+	
 	var index = m_spawnerModel.pick_creature_index()
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
@@ -33,6 +36,7 @@ func on_spawn_received():
 	model.on_knocked_out.connect(on_knocked_out_received)
 	model.on_updated.connect(on_updated_received)
 	
+	m_viewToModel[view] = model
 	m_liveEnemiesModel.add_enemy(model)
 
 func on_updated_received(p_model: EnemyModel):
