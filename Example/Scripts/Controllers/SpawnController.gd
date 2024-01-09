@@ -56,8 +56,11 @@ func on_clicked_received(p_view: EnemyView):
 func on_knocked_out_received(p_model: EnemyModel):
 	var view = m_viewToModel.find_key(p_model)
 	if view == null:
-		print(str("No key found in dictionary for value ", p_model))
+		print(str("No key found in dictionary for value: ", p_model))
 		return
+	
+	p_model.on_updated.disconnect(on_updated_received)
+	p_model.on_knocked_out.disconnect(on_knocked_out_received)
 	
 	m_viewToModel.erase(view)
 	view.terminate()
