@@ -1,9 +1,11 @@
 # ViewCollection tracks views created from Controllers and Features.
 class_name ViewCollection
 
+# TODO: Could be cool to make view collections into Dictionaries by default.
+# Maybe with AModel as key?
 var m_views: Array[AView]
 
-# Creates a new empty view
+# Creates a new empty View. Is this useful at all?
 func kickstart_view(p_view: AView, p_parent: Node):
 	m_views.append(p_view)
 	p_view.on_terminated.connect(view_terminated_received)
@@ -11,7 +13,7 @@ func kickstart_view(p_view: AView, p_parent: Node):
 	p_parent.add_child.call_deferred(p_view)
 	return p_view as AView
 
-# Returns the first view of the type of input class name.
+# Creates a View by instantiating the input packed scene.
 func kickstart_view_scene(p_viewScene: PackedScene, p_parent: Node):
 	var scene = p_viewScene.instantiate()
 	if not scene is AView:
@@ -26,7 +28,7 @@ func kickstart_view_scene(p_viewScene: PackedScene, p_parent: Node):
 	p_parent.add_child.call_deferred(view)
 	return view as AView
 
-# Returns the first view of the type of input class name.
+# Returns the first View of the type of input class name.
 func get_view_of_type(p_type: String) -> AView:
 	for view in m_views:
 		if(view.get_class_name() == p_type):
