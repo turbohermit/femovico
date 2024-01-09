@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Femovico"
+run/main_scene="res://Example/Scenes/scene_example.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
