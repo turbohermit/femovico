@@ -19,6 +19,7 @@ var Position:
 		return m_position
 
 signal on_updated(p_model: EnemyModel)
+signal on_targeted(p_model: EnemyModel)
 signal on_knocked_out(p_model: EnemyModel)
 
 func _init(p_resource: CreatureModelResource):
@@ -34,4 +35,6 @@ func take_damage(p_amount: int):
 	
 	if m_health <= 0:
 		on_knocked_out.emit(self)
-	
+
+func target():
+	on_targeted.emit(self)
