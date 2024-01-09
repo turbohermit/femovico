@@ -10,13 +10,13 @@ var m_speed: float
 var m_timeValue: float
 var m_scale: float
 
-var m_health: int
+var m_currentHealth: int
 var m_maxHealth: int
 
 # Typically Views should only Get data from Models, and never set any,
 var NormalizedHealth:
 	get:
-		return (1 / m_maxHealth) * m_health
+		return (1.0 / m_maxHealth) * m_currentHealth
 
 var Position:
 	get:
@@ -39,18 +39,18 @@ signal on_targeted(p_model: EnemyModel)
 signal on_knocked_out(p_model: EnemyModel)
 
 func _init(p_resource: CreatureModelResource):
-	m_health = p_resource.Health
-	m_maxHealth = m_health
+	m_currentHealth = p_resource.Health
+	m_maxHealth = p_resource.Health
 	m_speed = p_resource.Speed
 	m_scale = p_resource.Scale
 
 # Typically Controllers should only call functions on Models.
 # The Model will then manipulate its own data accordingly.
 func take_damage(p_amount: int):
-	m_health -= p_amount
+	m_currentHealth -= p_amount
 	on_updated.emit(self)
 	
-	if m_health <= 0:
+	if m_currentHealth <= 0:
 		on_knocked_out.emit(self)
 
 func target():

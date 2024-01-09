@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://m736e55np51" path="res://icon.svg" id="2_n6uch"]
 
 [sub_resource type="Gradient" id="Gradient_0q63b"]
-colors = PackedColorArray(0.509412, 1.2514e-06, 2.88785e-07, 1, 0.0964605, 1, 0.215066, 1)
+offsets = PackedFloat32Array(0, 0.471074, 1)
+colors = PackedColorArray(0.159126, 1.78986e-07, 6.01634e-09, 1, 0.840328, 2.88785e-06, 1.44392e-06, 1, 1, 1, 1, 1)
 
 [node name="view_enemy" type="Node2D" node_paths=PackedStringArray("Visual")]
 script = ExtResource("1_71lbc")
