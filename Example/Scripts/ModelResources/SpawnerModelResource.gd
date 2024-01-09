@@ -5,10 +5,15 @@ func get_class_name(): return "SpawnerModelResource"
 @export_category("Spawn Values")
 @export var TimeBeforeSpawn: float = 5
 @export var MaximumLivingSpawns: int = 50
+@export var MaximumRange: float = 100
 
 # Replace with your own data.
 @export_category("Creatures")
 @export var Creatures: Array[CreatureModelResource]
+
+var CreatureCount:
+	get:
+		return Creatures.size()
 
 # It's good practice to seperate runtime Model instances from ModelResources,
 # So you don't accidentally change serialized values.

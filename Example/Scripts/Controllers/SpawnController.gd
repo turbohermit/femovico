@@ -6,16 +6,18 @@ func get_class_name(): return "SpawnController"
 var m_spawnerResource: SpawnerModelResource
 var m_spawnerModel: SpawnerModel
 var m_liveEnemiesModel: LiveEnemiesModel
+var m_randomModel: RandomModel
 
 # View Scene
 var m_enemySceneView: PackedScene
 
 var m_viewToModel = {}
 
-func _init(p_spawnerResource: SpawnerModelResource, p_liveEnemiesModel: LiveEnemiesModel, p_enemySceneView: PackedScene):
-	m_enemySceneView = p_enemySceneView
+func _init(p_liveEnemiesModel: LiveEnemiesModel, p_randomModel: RandomModel, p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
 	m_liveEnemiesModel = p_liveEnemiesModel
+	m_randomModel = p_randomModel
 	m_spawnerResource = p_spawnerResource
+	m_enemySceneView = p_enemySceneView
 	
 	m_spawnerModel = SpawnerModel.new(p_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
@@ -27,7 +29,7 @@ func on_spawn_received():
 	if m_liveEnemiesModel.Count >= m_spawnerResource.MaximumLivingSpawns:
 		return
 	
-	var index = m_spawnerModel.pick_creature_index()
+	var index = m_randomModel.range(m_spawnerResource.CreatureCount)
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
