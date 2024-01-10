@@ -12,7 +12,7 @@ func _ready():
 # Signals that it's being terminated, so any subscribers can react accordingly.
 # Then it removes itself from the hierarchy.
 func terminate():
-	emit_signal("on_terminated", self)
+	on_terminated.emit(self)
 	queue_free()
 
 # This is called 
