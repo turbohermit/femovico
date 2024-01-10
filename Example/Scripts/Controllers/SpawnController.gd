@@ -11,8 +11,6 @@ var m_randomModel: RandomModel
 # View Scene
 var m_enemySceneView: PackedScene
 
-var m_viewToModel = {}
-
 func _init(p_liveEnemiesModel: LiveEnemiesModel, p_randomModel: RandomModel, p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
 	m_liveEnemiesModel = p_liveEnemiesModel
 	m_randomModel = p_randomModel
@@ -33,36 +31,34 @@ func on_spawn_received():
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
-	var view: EnemyView = m_viewCollection.kickstart_view_scene(m_enemySceneView, m_root)
+	var view: EnemyView = m_viewCollection.kickstart_view_scene(model, m_enemySceneView, m_root)
 	view.on_clicked.connect(on_clicked_received)
 	model.on_knocked_out.connect(on_knocked_out_received)
 	model.on_updated.connect(on_updated_received)
 	
-	m_viewToModel[view] = model
 	m_liveEnemiesModel.add_enemy(model)
 
 func on_updated_received(p_model: EnemyModel):
-	var view = m_viewToModel.find_key(p_model)
-	if view == null:
-		print(str("No key found in dictionary for value ", p_model))
+	if not m_viewCollection.has_model(p_model):
 		return
 	
+	var view = m_viewCollection.get_view(p_model)
 	view.update(p_model)
 
 func on_clicked_received(p_view: EnemyView):
-	if not m_viewToModel.has(p_view):
+	if not m_viewCollection.has_view(p_view):
 		print(str("View: ", p_view, " not found in dictionary."))
 		return
-	m_viewToModel[p_view].target()
+	
+	var model = m_viewCollection.get_model(p_view)
+	model.target()
 
 func on_knocked_out_received(p_model: EnemyModel):
-	var view = m_viewToModel.find_key(p_model)
-	if view == null:
+	if not m_viewCollection.has_model(p_model):
 		print(str("No key found in dictionary for value: ", p_model))
 		return
 	
 	p_model.on_updated.disconnect(on_updated_received)
 	p_model.on_knocked_out.disconnect(on_knocked_out_received)
-	
-	m_viewToModel.erase(view)
+	var view = m_viewCollection.get_view(p_model)
 	view.terminate()
