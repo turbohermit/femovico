@@ -59,8 +59,8 @@ func update_tick(p_deltaTime: float):
 
 # Terminates each view in this collection in reverse order.
 func terminate():
-	for i in range(m_views.size() - 1, -1, -1):
-		var view = m_views[-i-1]
+	for model in m_views:
+		var view = m_views[model]
 		if not view == null:
 			view.terminate()
 		view = null
@@ -68,8 +68,7 @@ func terminate():
 
 # When an individual view is terminated from anywhere, remove it from the collection.
 func view_terminated_received(p_view: AView):
-	if not m_views.has(p_view):
+	if not has_view(p_view):
 		return
-	
 	p_view.on_terminated.disconnect(view_terminated_received)
 	m_views.erase(p_view)
