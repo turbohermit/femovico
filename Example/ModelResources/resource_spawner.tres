@@ -8,4 +8,5 @@
 script = ExtResource("1_eqgg3")
 TimeBeforeSpawn = 1.0
 MaximumLivingSpawns = 50
+MaximumRange = 100.0
 Creatures = Array[Resource("res://Example/Scripts/ModelResources/CreatureModelResource.gd")]([ExtResource("1_wpd82"), ExtResource("2_g065w")])
