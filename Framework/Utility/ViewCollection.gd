@@ -1,18 +1,26 @@
 # ViewCollection tracks Views created from Controllers and Features.
 class_name ViewCollection
+extends RefCounted
 
+var m_root: Node
 var m_views: Dictionary = {}
+var m_siblingIndex: int
 
-# Tracks a view created dynamically somewhere else.
-func kickstart_view(p_model: AModel, p_view: AView, p_parent: Node) -> AView:
-	m_views[p_model] = p_view
-	p_view.on_terminated.connect(view_terminated_received)
-	
-	p_parent.add_child.call_deferred(p_view)
-	return p_view
+var Count:
+	get: return m_views.size()
+var Models:
+	get: return m_views.keys()
+
+func _init(p_root: Node, p_siblingIndex: int = 0):
+	m_root = p_root
+	m_siblingIndex = p_siblingIndex
 
 # Creates a View by instantiating the input packed scene.
-func kickstart_view_scene(p_model: AModel, p_viewScene: PackedScene, p_parent: Node) -> AView:
+func kickstart_view_scene(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
+	if p_viewScene == null:
+		print(str("Supplied view scene is null for key ", p_key))
+		return null
+	
 	var scene = p_viewScene.instantiate()
 	if not scene is AView:
 		print(str("Trying to instantiate a View scene but the scene root is not a View: ", p_viewScene))
@@ -20,19 +28,26 @@ func kickstart_view_scene(p_model: AModel, p_viewScene: PackedScene, p_parent: N
 		return null
 	
 	var view = scene as AView
-	m_views[p_model] = view
-	view.on_terminated.connect(view_terminated_received)
-
+	append_view(p_key, view)
+	if view is ADraggableView or view is ADroppableView:
+		ControllerDragAndDrop.register(p_key, view)
+	
+	# TODO: This is not a nice way of handling view sorting.
 	p_parent.add_child.call_deferred(view)
+	p_parent.move_child.call_deferred(view, -1)
 	return view
 
-func get_view(p_model: AModel) -> AView:
-	if not m_views.has(p_model):
-		print(str("Model: ", p_model," not found in ViewCollection"))
-		return null
-	return m_views[p_model]
+func append_view(p_key: Variant, p_view: AView):
+	m_views[p_key] = p_view
+	p_view.on_terminated.connect(view_terminated_received)
 
-func get_model(p_view: AView) -> AModel:
+func get_view(p_key: Variant) -> AView:
+	if not m_views.has(p_key):
+		print(str("Key ", p_key," not found in ViewCollection"))
+		return null
+	return m_views[p_key]
+
+func get_key(p_view: AView) -> Variant:
 	var key = m_views.find_key(p_view)
 	if key == null:
 		print(str("View: ", p_view," not found in ViewCollection"))
@@ -45,6 +60,9 @@ func has_model(p_model: AModel) -> bool:
 func has_view(p_view: AView) -> bool:
 	return m_views.find_key(p_view) != null
 
+func has_key(p_key: Variant) -> bool:
+	return m_views.has(p_key)
+
 # Returns the first View of the type of input class name.
 func get_view_of_type(p_type: String) -> AView:
 	for view in m_views.values():
@@ -54,7 +72,7 @@ func get_view_of_type(p_type: String) -> AView:
 
 # Calls update_tick on each tracked View.
 func update_tick(p_deltaTime: float):
-	for view in m_views:
+	for view in m_views.values():
 		view.update_tick(p_deltaTime)
 
 # Terminates each view in this collection in reverse order.
@@ -62,13 +80,14 @@ func terminate():
 	for model in m_views:
 		var view = m_views[model]
 		if not view == null:
-			view.terminate()
-		view = null
+			view.terminate(false)
 	m_views.clear()
 
 # When an individual view is terminated from anywhere, remove it from the collection.
 func view_terminated_received(p_view: AView):
 	if not has_view(p_view):
 		return
+	
+	var key = get_key(p_view)
 	p_view.on_terminated.disconnect(view_terminated_received)
-	m_views.erase(p_view)
+	m_views.erase(key)
