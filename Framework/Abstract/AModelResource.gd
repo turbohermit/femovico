@@ -4,3 +4,6 @@
 class_name AModelResource
 extends Resource
 func get_class_name(): return "AModelResource"
+
+@export_category("Model Resource")
+@export var MRID: String
