@@ -29,8 +29,6 @@ func kickstart_view_scene(p_key: Variant, p_viewScene: PackedScene, p_parent: No
 	
 	var view = scene as AView
 	append_view(p_key, view)
-	if view is ADraggableView or view is ADroppableView:
-		ControllerDragAndDrop.register(p_key, view)
 	
 	# TODO: This is not a nice way of handling view sorting.
 	p_parent.add_child.call_deferred(view)
