@@ -6,7 +6,7 @@ const user_path: String = "user://save.json"
 
 # Instanced
 var m_saveFile: FileAccess
-# Key: Class Key, Value: Dictionary (Key: Model Key, Value: Model)
+# Key: Class Key, Value: Dictionary (Key: MRID, Value: Array[Serializables])
 var m_cachedModels: Dictionary
 
 # Public Functions
@@ -16,44 +16,35 @@ func model_exists_in_cache(p_class: GDScript, p_key: String) -> bool:
 	return m_cachedModels.has(classKey) and m_cachedModels[classKey].has(p_key)
 
 # Adds Model to cache and then writes cache to save file.
-func serialize_model(p_model: ASerializableModel) -> bool:
+func serialize_model(p_saveable: ASaveableModelResource) -> bool:
 	download_data_from_disk()
-	var classKey = get_class_key(p_model.get_script())
-	var modelKey = p_model.get_serialization_key()
+	
+	var classKey: String = get_class_key(p_saveable.get_script())
+	var modelKey: String = p_saveable.MRID
+	
+	# Initialize dictionary for that class if it's not already.
 	if not m_cachedModels.has(classKey):
 		m_cachedModels[classKey] = {}
 	
-	m_cachedModels[classKey][modelKey] = p_model
+	m_cachedModels[classKey][modelKey] = p_saveable.get_serializables_from_instance()
 	write_cache_to_save_file()
 	return true
 
 # Returns Model from cache if it has key, otherwise returns a new one.
-func load_model(p_class: GDScript, p_modelKey: String) -> ASerializableModel:
+func load_saveable(p_saveable: ASaveableModelResource) -> bool:
 	download_data_from_disk()
-	var classKey = get_class_key(p_class)
-	if m_cachedModels.has(classKey) and m_cachedModels[classKey].has(p_modelKey):
-		return m_cachedModels[classKey][p_modelKey]
+	
+	var classKey = get_class_key(p_saveable.get_script())
+	var modelKey = p_saveable.MRID
+	if m_cachedModels.has(classKey) and m_cachedModels[classKey].has(modelKey):
+		p_saveable.read_serializables_from_disk(m_cachedModels[classKey][modelKey])
+		return true
+	
+	# Initialize dictionary for that class if it's not already.
 	if not m_cachedModels.has(classKey):
 		m_cachedModels[classKey] = {}
 	
-	var instance = p_class.new()
-	m_cachedModels[classKey][p_modelKey] = instance
-	return instance
-
-# Returns an array of serializable models if they can be found, otherwise return an empty array.
-func load_models(p_class: GDScript) -> Array[ASerializableModel]:
-	download_data_from_disk()
-	var classKey = get_class_key(p_class)
-	var models: Array[ASerializableModel] = []
-	
-	if m_cachedModels.has(classKey):
-		var classDictionary = m_cachedModels[classKey]
-		for model in classDictionary.values():
-			models.append(model)
-		return models
-	
-	m_cachedModels[classKey] = {}
-	return models
+	return false
 
 # "Private" functions
 # Converts cache to JSON parsable data and then writes it to save file.
@@ -61,11 +52,14 @@ func write_cache_to_save_file():
 	if m_saveFile == null or not m_saveFile.is_open():
 		m_saveFile = FileAccess.open(user_path, FileAccess.WRITE)
 	
+	# TODO, REMOVE ALL THIS? JUST SAVE THE CACHE
 	var parsableData: Dictionary = {}
 	for classKey in m_cachedModels.keys():
 		parsableData[classKey] = {}
+		
+		# For each cached model, 
 		for modelKey in m_cachedModels[classKey].keys():
-			parsableData[classKey][modelKey] = m_cachedModels[classKey][modelKey].get_serializables()
+			parsableData[classKey][modelKey] = m_cachedModels[classKey][modelKey]
 	
 	var contents: String = JSON.stringify(parsableData)
 	m_saveFile.store_line(contents)
@@ -86,23 +80,23 @@ func download_data_from_disk() -> bool:
 	var json = JSON.new()
 	
 	# Check if there is any error while parsing the JSON string, skip in case of failure
-	var parseResults = json.parse(contents)
-	if not parseResults == OK:
-		var error = json.get_error_message()
-		print(str("JSON Parse Error: ", error))
+	var error = json.parse(contents)
+	if error != OK:
+		var errorMessage = json.get_error_message()
+		print(str("JSON Parse Error Code: ", error, " Message: ", errorMessage))
 		m_saveFile.close()
 		return false
 	
 	#Dictionary Key: Class Key, Value: Dictionary (Key: Model Key, Value: Array[Variants])
+	# TODO: Just cache entire json.
 	m_cachedModels = {}
 	var parsedData = json.get_data()
+	
 	for classKey in parsedData:
-		var classResource = load(classKey)
 		m_cachedModels[classKey] = {}
+		
 		for modelKey in parsedData[classKey]:
-			var instance = classResource.new()
-			instance.download_serializables(parsedData[classKey][modelKey])
-			m_cachedModels[classKey][modelKey] = instance
+			m_cachedModels[classKey][modelKey] = parsedData[classKey][modelKey]
 	
 	m_saveFile.close()
 	return true
@@ -110,16 +104,21 @@ func download_data_from_disk() -> bool:
 func clear_save():
 	if m_saveFile != null and m_saveFile.is_open():
 		m_saveFile.close()
+	
+	m_cachedModels.clear()
 	m_saveFile = FileAccess.open(user_path, FileAccess.WRITE)
 	m_saveFile.close()
 
-func clear_model(p_model: ASerializableModel):
+func clear_model(p_model: ASaveableModelResource):
 	download_data_from_disk()
+	
 	var classKey = get_class_key(p_model.get_script())
-	var modelKey = p_model.get_serialization_key()
+	var modelKey = p_model.MRID
+	
 	if not m_cachedModels.has(classKey) or not m_cachedModels[classKey].has(modelKey):
 		print(str("Model to delete not found in cache ", modelKey))
 		return
+	
 	m_cachedModels[classKey].erase(modelKey)
 	write_cache_to_save_file()
 
