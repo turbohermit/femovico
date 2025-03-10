@@ -12,10 +12,10 @@ func _process(p_deltaTime: float):
 
 func terminate(p_signal: bool = true):
 	if p_signal:
-		emit_signal("on_terminated", self)
+		on_terminated.emit(self)
 	queue_free()
 
-func update_tick(p_deltaTime: float):
+func update_tick(_p_deltaTime: float):
 	pass
 
 func on_initialized():

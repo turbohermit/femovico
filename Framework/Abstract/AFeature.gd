@@ -96,7 +96,7 @@ func on_subfeature_terminated_received(p_subfeature: AFeature):
 	m_subfeatures.erase(p_subfeature)
 
 # Virtual method for assigning optional parameters passed through the "initialize" function
-func init_parameters(p_optionalParams: Array[Object]):
+func init_parameters(_p_optionalParams: Array[Object]):
 	pass
 
 # Virtual method to implement initializing Models.

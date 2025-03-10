@@ -15,7 +15,7 @@ func get_serializables() -> Array[Variant]:
 func get_serialization_key() -> String:
 	return "NotImplemented"
 
-func download_serializables(p_serializables: Array[Variant]):
+func download_serializables(_p_serializables: Array[Variant]):
 	pass
 
 func delete():

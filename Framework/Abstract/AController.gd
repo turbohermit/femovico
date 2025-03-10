@@ -26,5 +26,5 @@ func on_initialized():
 func on_terminate():
 	pass
 
-func update_tick(p_deltaTime: float):
+func update_tick(_p_deltaTime: float):
 	pass
