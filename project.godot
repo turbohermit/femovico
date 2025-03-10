@@ -17,7 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameStateUtility="*res://Framework/Utility/GameStateUtility.gd"
+SaveUtility="*res://addons/femovico/Framework/Utility/SaveUtility.gd"
+IDUtility="*res://addons/femovico/Framework/Utility/IDUtility.gd"
+GameStateUtility="*res://addons/femovico/Framework/Utility/GameStateUtility.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/femovico/plugin.cfg")
 
 [rendering]
 
