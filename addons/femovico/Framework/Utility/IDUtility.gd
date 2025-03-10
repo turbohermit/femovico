@@ -24,4 +24,3 @@ static func generate_v4() -> String:
 		b[8], b[9],
 		b[10], b[11], b[12], b[13], b[14], b[15]
 	]
-
