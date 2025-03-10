@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="CreatureModelResource" load_steps=2 format=3 uid="uid://c7kojppgegpmn"]
-
-[ext_resource type="Script" path="res://Example/Scripts/ModelResources/CreatureModelResource.gd" id="1_byl82"]
-
-[resource]
-script = ExtResource("1_byl82")
-Health = 5
-Speed = 0.4
-Scale = 0.45
