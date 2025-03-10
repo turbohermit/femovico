@@ -4,17 +4,12 @@ class_name FeatureInitializer
 extends Node
 
 @export var StartupFeatures: Array[AFeature]
-@export var FollowUpScene: PackedScene
 
+# Private
 var m_features: Array[AFeature]
 
 func _ready():
 	start_features()
-	if(FollowUpScene == null):
-		return
-	
-	var scene = FollowUpScene.instantiate()
-	add_child(scene)
 
 # Called every frame. p_delta is the elapsed time since the previous frame.
 # This calls update_tick on Features > Controllers > Views.
