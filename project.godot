@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SaveUtility="*res://addons/femovico/Framework/Utility/SaveUtility.gd"
 IDUtility="*res://addons/femovico/Framework/Utility/IDUtility.gd"
 GameStateUtility="*res://addons/femovico/Framework/Utility/GameStateUtility.gd"
+InputUtility="*res://addons/femovico/Framework/Utility/InputUtility.gd"
 
 [editor_plugins]
 
