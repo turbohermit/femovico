@@ -1,6 +1,5 @@
 class_name MovementController
 extends AController
-func get_class_name(): return "MovementController"
 
 var m_spawnerModelResource: SpawnerModelResource
 var m_randomModel: RandomModel

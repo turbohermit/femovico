@@ -1,6 +1,5 @@
 class_name RandomModel
 extends AModel
-func get_class_name(): return "RandomModel"
 
 var m_generator: RandomNumberGenerator
 

@@ -1,6 +1,5 @@
 class_name CreatureModelResource
 extends AModelResource
-func get_class_name(): return "CreatureModelResource"
 
 @export_category("Creature Base Stats")
 @export var Health: int = 10

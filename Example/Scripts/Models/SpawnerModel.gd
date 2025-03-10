@@ -1,6 +1,5 @@
 class_name SpawnerModel
 extends AModel
-func get_class_name(): return "SpawnerModel"
 
 var m_countdown: float
 var m_spawnTime: float

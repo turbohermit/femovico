@@ -1,6 +1,5 @@
 class_name EnemyModel
 extends AModel
-func get_class_name(): return "EnemyModel"
 
 # It's good practice for Models to have strict public and private accessors.
 # This is to prevent Views or Controllers from manipulating data outside of their responsibility.

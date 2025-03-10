@@ -1,6 +1,5 @@
 class_name CombatFeature
 extends AFeature
-func get_class_name(): return "CombatFeature"
 
 @export_category("Model Resources")
 @export var SpawnerResource: SpawnerModelResource

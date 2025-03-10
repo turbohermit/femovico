@@ -1,6 +1,5 @@
 class_name LiveEnemiesModel
 extends AModel
-func get_class_name(): return "LiveEnemiesModel"
 
 var m_enemies: Array[EnemyModel]
 

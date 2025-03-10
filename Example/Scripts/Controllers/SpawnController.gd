@@ -1,6 +1,5 @@
 class_name SpawnController
 extends AController
-func get_class_name(): return "SpawnController"
 
 # Models
 var m_spawnerResource: SpawnerModelResource
@@ -31,7 +30,7 @@ func on_spawn_received():
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
-	var view: EnemyView = m_viewCollection.kickstart_view_scene(model, m_enemySceneView, m_root)
+	var view: EnemyView = kickstart(model, m_enemySceneView, m_root)
 	view.on_clicked.connect(on_clicked_received)
 	model.on_knocked_out.connect(on_knocked_out_received)
 	model.on_updated.connect(on_updated_received)

@@ -1,6 +1,5 @@
 class_name EnemyView
 extends AView
-func get_class_name(): return "EnemyView"
 
 # If you want to use any Godot nodes, do so in Views.
 # Good pratice is to have a View as parent, and assign any nodes it uses in the View script.

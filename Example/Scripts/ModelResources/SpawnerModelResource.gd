@@ -1,6 +1,5 @@
 class_name SpawnerModelResource
 extends AModelResource
-func get_class_name(): return "SpawnerModelResource"
 
 @export_category("Spawn Values")
 @export var TimeBeforeSpawn: float = 5

@@ -1,6 +1,5 @@
 class_name HealthController
 extends AController
-func get_class_name(): return "HealthController"
 
 var m_liveEnemiesModel: LiveEnemiesModel
 
