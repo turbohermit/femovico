@@ -20,7 +20,7 @@ func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
 	var feature = self.duplicate()
 	
 	feature.m_root = p_root
-	feature.m_viewCollection = ViewCollection.new(p_root, ViewRootIndex )
+	feature.m_viewCollection = ViewCollection.new(p_root, ViewRootIndex)
 	
 	feature.init_parameters(p_optionalParams)
 	feature.init_models()

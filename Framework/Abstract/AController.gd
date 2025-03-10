@@ -17,6 +17,9 @@ func terminate(p_signal: bool = true):
 	if p_signal:
 		on_terminated.emit(self)
 
+func kickstart(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
+	return m_viewCollection.kickstart(p_key, p_viewScene, p_parent)
+
 # Called after _init and m_root is assigned.
 func on_initialized():
 	pass

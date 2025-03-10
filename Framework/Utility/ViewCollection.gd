@@ -16,7 +16,7 @@ func _init(p_root: Node, p_siblingIndex: int = 0):
 	m_siblingIndex = p_siblingIndex
 
 # Creates a View by instantiating the input packed scene.
-func kickstart_view_scene(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
+func kickstart(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
 	if p_viewScene == null:
 		print(str("Supplied view scene is null for key ", p_key))
 		return null
