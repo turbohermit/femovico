@@ -50,7 +50,7 @@ func on_clicked_received(p_view: EnemyView):
 		print(str("View: ", p_view, " not found in dictionary."))
 		return
 	
-	var model = m_viewCollection.get_model(p_view)
+	var model = m_viewCollection.get_key(p_view)
 	model.target()
 
 func on_knocked_out_received(p_model: EnemyModel):
