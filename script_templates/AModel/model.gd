@@ -1,6 +1,5 @@
 class_name _CLASS_
 extends AModel
-func get_class_name(): return "_CLASS_"
 
 signal on_updated(p_model: _CLASS_)
 

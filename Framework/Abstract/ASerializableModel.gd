@@ -2,7 +2,6 @@
 # Useful for game saving.
 class_name ASerializableModel
 extends AModel
-func get_class_name(): return "ASerializableModel"
 
 func save():
 	var success = SaveUtility.serialize_model(self)

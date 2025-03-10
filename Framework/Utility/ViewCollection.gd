@@ -62,9 +62,9 @@ func has_key(p_key: Variant) -> bool:
 	return m_views.has(p_key)
 
 # Returns the first View of the type of input class name.
-func get_view_of_type(p_type: String) -> AView:
+func get_view_of_type(p_type: Script) -> AView:
 	for view in m_views.values():
-		if(view.get_class_name() == p_type):
+		if(view.get_script() == p_type):
 			return view
 	return null
 

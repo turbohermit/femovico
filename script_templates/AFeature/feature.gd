@@ -1,6 +1,5 @@
 class_name _CLASS_
 extends AFeature
-func get_class_name(): return "_CLASS_"
 
 # Model Resources
 

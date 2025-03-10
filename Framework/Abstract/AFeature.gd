@@ -2,7 +2,6 @@
 # Features are Resources that act as a factory for Model, Controller and View initialization.
 class_name AFeature
 extends Resource
-func get_class_name(): return "AFeature"
 
 # Public
 @export var ViewRootIndex: int
@@ -29,7 +28,7 @@ func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
 	feature.init_controllers()
 	feature.on_initialized()
 	
-	print(str(feature.get_class_name(), " initialized."))
+	print(str(feature.get_script().get_global_name(), " initialized."))
 	return feature as AFeature
 
 # Creates and tracks Controller instaces from the Feature.
@@ -57,7 +56,7 @@ func update_tick(p_deltaTime: float):
 
 # Terminates all Views in the ViewCollection and then all tracked Controllers.
 func terminate(p_signal: bool = true):
-	print(str("Terminating feature:", get_class_name()))
+	print(str("Terminating feature:", get_script().get_global_name()))
 	
 	if m_viewCollection != null:
 		m_viewCollection.terminate()

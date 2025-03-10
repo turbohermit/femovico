@@ -30,9 +30,9 @@ func start_features():
 		m_features.append(instance)
 
 # Returns the first found feature with the input class name.
-func get_feature(p_type: String) -> AFeature:
+func get_feature(p_type: Script) -> AFeature:
 	for feature in m_features:
-		if feature.get_class_name() == p_type:
+		if feature.get_script() == p_type:
 			return feature
 	return null
 
