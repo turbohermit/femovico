@@ -4,6 +4,7 @@ extends AFeature
 # Model Resources
 @export var HandConfig: ConfigHand
 @export var DeckConfig: ConfigDeck
+@export var HudConfig: ConfigHud
 
 # Model Instances
 var m_modelHand: ModelHand
@@ -15,14 +16,18 @@ func init_models():
 
 func init_controllers():
 	kickstart(ControllerHandManager.new(
-			m_modelHand,
-			HandConfig)
+		m_modelHand,
+		HandConfig)
 	)
 	kickstart(ControllerCardDrawer.new(
-			m_modelTurnOrder,
-			m_modelHand,
-			DeckConfig)
+		m_modelTurnOrder,
+		m_modelHand,
+		DeckConfig)
 	)
+	kickstart(ControllerPhaseHandler.new(
+		m_modelTurnOrder,
+		HudConfig
+	))
 
 func on_initialized():
 	DeckConfig.StartingDeck.instantiate()

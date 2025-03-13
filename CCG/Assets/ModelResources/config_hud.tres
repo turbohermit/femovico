@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ConfigHud" load_steps=3 format=3 uid="uid://ddu7bnoqpap17"]
+
+[ext_resource type="PackedScene" uid="uid://dxxdj80skalmq" path="res://CCG/Assets/Scenes/ViewScenes/view_phase_indicator.tscn" id="1_fta7y"]
+[ext_resource type="Script" path="res://CCG/Scripts/Configs/ConfigHud.gd" id="1_m7tfj"]
+
+[resource]
+script = ExtResource("1_m7tfj")
+PhaseIndicatorViewScene = ExtResource("1_fta7y")
+MRID = ""

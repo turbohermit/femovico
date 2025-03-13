@@ -26,3 +26,6 @@ func iterate():
 	
 	Phase = (1 + Phase as int) as EPhase
 	on_updated.emit(self)
+
+func phase_to_string() -> String:
+	return str("P", (PlayerIndex + 1), ": ", EPhase.keys()[Phase])
