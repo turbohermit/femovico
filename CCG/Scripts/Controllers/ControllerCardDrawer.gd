@@ -34,3 +34,5 @@ func on_turn_order_updated_received(p_model: ModelTurnOrder):
 	
 	for card in cards:
 		m_hand.add_card(card)
+	
+	m_turnOrder.iterate()

@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://CCG/Scripts/Views/ViewPhaseIndicator.gd" id="1_obms2"]
 
-[node name="ViewPhaseIndicator" type="Node" node_paths=PackedStringArray("PhaseButton")]
+[node name="ViewPhaseIndicator" type="Node" node_paths=PackedStringArray("PhaseButton", "PhaseInfoLabel", "PlayerInfoLabel")]
 script = ExtResource("1_obms2")
-PhaseButton = NodePath("Control/PhaseButton")
+PhaseButton = NodePath("Control/VerticalLayout/PhaseButton")
+PhaseInfoLabel = NodePath("Control/VerticalLayout/PhaseInfoLabel")
+PlayerInfoLabel = NodePath("Control/VerticalLayout/PlayerInfoLabel")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -15,15 +17,25 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PhaseButton" type="Button" parent="Control"]
-custom_minimum_size = Vector2(0, 40)
+[node name="VerticalLayout" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -10.0
-offset_bottom = 4.0
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PHASE_THIS"
+
+[node name="PlayerInfoLabel" type="Label" parent="Control/VerticalLayout"]
+layout_mode = 2
+text = "Player"
+
+[node name="PhaseInfoLabel" type="Label" parent="Control/VerticalLayout"]
+layout_mode = 2
+text = "Phase"
+
+[node name="PhaseButton" type="Button" parent="Control/VerticalLayout"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "End Phase"
