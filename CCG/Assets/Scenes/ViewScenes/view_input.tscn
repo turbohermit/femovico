@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnod17ejj58kt"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Views/ViewInput.gd" id="1_tv0f8"]
+
+[node name="ViewInput" type="Node"]
+script = ExtResource("1_tv0f8")
