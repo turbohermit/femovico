@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ModelResourceDeck" load_steps=6 format=3 uid="uid://bd8d45fsto426"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceCard.gd" id="1_akmsw"]
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceDeck.gd" id="2_8mbh3"]
+[ext_resource type="Resource" uid="uid://c2k2q7xcvpcwv" path="res://CCG/Assets/ModelResources/card_goblin.tres" id="2_vw4et"]
+[ext_resource type="Resource" uid="uid://04bbtn1dvmp3" path="res://CCG/Assets/ModelResources/card_ogre.tres" id="3_l7mgv"]
+[ext_resource type="Resource" uid="uid://d01nwvltuvqfx" path="res://CCG/Assets/ModelResources/card_troll.tres" id="4_2m5gu"]
+
+[resource]
+script = ExtResource("2_8mbh3")
+Cards = Array[ExtResource("1_akmsw")]([ExtResource("2_vw4et"), ExtResource("3_l7mgv"), ExtResource("4_2m5gu"), ExtResource("2_vw4et"), ExtResource("3_l7mgv"), ExtResource("2_vw4et"), ExtResource("2_vw4et"), ExtResource("2_vw4et")])
+MRID = ""

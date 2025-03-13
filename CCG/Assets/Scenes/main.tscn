@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhxdsa87ur7ue"]
+
+[ext_resource type="Script" path="res://addons/femovico/Framework/Utility/FeatureInitializer.gd" id="1_j8uts"]
+[ext_resource type="Script" path="res://addons/femovico/Framework/Abstract/AFeature.gd" id="2_ugqiy"]
+[ext_resource type="Resource" uid="uid://hx2oxiqkm1ja" path="res://CCG/Assets/Features/feature_card_play.tres" id="3_hje5k"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="FeatureInitializer" type="Node" parent="."]
+script = ExtResource("1_j8uts")
+StartupFeatures = Array[ExtResource("2_ugqiy")]([ExtResource("3_hje5k")])

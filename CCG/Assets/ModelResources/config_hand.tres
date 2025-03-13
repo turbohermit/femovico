@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConfigHand" load_steps=4 format=3 uid="uid://bvcbvbe03x2mh"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Configs/ConfigHand.gd" id="1_6lmnp"]
+[ext_resource type="PackedScene" uid="uid://dpqw6ihhyjyk0" path="res://CCG/Assets/Scenes/ViewScenes/view_card.tscn" id="1_fe3jr"]
+[ext_resource type="PackedScene" uid="uid://0j1tmondmvje" path="res://CCG/Assets/Scenes/ViewScenes/view_hand.tscn" id="2_uk2wi"]
+
+[resource]
+script = ExtResource("1_6lmnp")
+HandViewScene = ExtResource("2_uk2wi")
+CardViewScene = ExtResource("1_fe3jr")
+MRID = ""

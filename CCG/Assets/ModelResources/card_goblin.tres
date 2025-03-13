@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ModelResourceCard" load_steps=2 format=3 uid="uid://c2k2q7xcvpcwv"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceCard.gd" id="1_qexhu"]
+
+[resource]
+script = ExtResource("1_qexhu")
+DisplayNameKey = &"Goblin"
+MRID = ""

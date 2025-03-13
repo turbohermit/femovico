@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqw6ihhyjyk0"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Views/ViewCard.gd" id="1_xwold"]
+[ext_resource type="Texture2D" uid="uid://dr2tobv5jt0cq" path="res://CCG/Assets/Sprites/tex_sprite_card_default.png" id="2_qo3pa"]
+
+[node name="ViewCard" type="TextureRect" node_paths=PackedStringArray("ParentNode", "TitleLabel")]
+custom_minimum_size = Vector2(150, 212)
+offset_right = 150.0
+offset_bottom = 212.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+texture = ExtResource("2_qo3pa")
+expand_mode = 1
+script = ExtResource("1_xwold")
+ParentNode = NodePath(".")
+TitleLabel = NodePath("TitleLabel")
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Card Name That Be Pretty Long![/center]"
+scroll_active = false
+
+[node name="Visual" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ModelResourceCard" load_steps=2 format=3 uid="uid://04bbtn1dvmp3"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceCard.gd" id="1_y4tib"]
+
+[resource]
+script = ExtResource("1_y4tib")
+DisplayNameKey = &"Ogre"
+MRID = ""
