@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/femovico/Framework/Abstract/AFeature.gd" id="2_ugqiy"]
 [ext_resource type="Resource" uid="uid://hx2oxiqkm1ja" path="res://CCG/Assets/Features/feature_card_play.tres" id="3_hje5k"]
 
-[node name="Node3D" type="Node3D"]
+[node name="SceneMain" type="Node"]
 
 [node name="FeatureInitializer" type="Node" parent="."]
 script = ExtResource("1_j8uts")
