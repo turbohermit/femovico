@@ -6,6 +6,7 @@ extends AFeature
 @export var HandConfig: ConfigHand
 @export var DeckConfig: ConfigDeck
 @export var HudConfig: ConfigHud
+@export var RulesConfig: ConfigRules
 
 @export_category("View Scenes")
 @export var InputViewScene: PackedScene
@@ -19,7 +20,7 @@ var m_viewInput: ViewInput
 
 func init_models():
 	m_modelHand = ModelHand.new()
-	m_modelTurnOrder = ModelTurnOrder.new()
+	m_modelTurnOrder = ModelTurnOrder.new(RulesConfig.PlayerAmount)
 
 func init_views():
 	m_viewInput = m_viewCollection.kickstart("INPUT", InputViewScene)

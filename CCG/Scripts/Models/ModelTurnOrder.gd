@@ -11,20 +11,25 @@ enum EPhase
 
 var PlayerIndex: int
 var Phase: EPhase
+var PlayerAmount: int
 
 signal on_updated(p_model: ModelTurnOrder)
 
-func _init():
+func _init(p_playerAmount: int):
+	PlayerAmount = p_playerAmount
 	Phase = EPhase.START
 
 func iterate():
-	if Phase == EPhase.END:
-		Phase = EPhase.START
-		PlayerIndex += 1
-		on_updated.emit(self)
-		return
+	var phaseIndex: int = (Phase as int) + 1
 	
-	Phase = (1 + Phase as int) as EPhase
+	if phaseIndex == EPhase.size():
+		phaseIndex = 0 
+		PlayerIndex += 1
+	
+	if PlayerIndex == PlayerAmount:
+		PlayerIndex = 0
+	
+	Phase = phaseIndex as EPhase
 	on_updated.emit(self)
 
 func phase_to_string() -> String:

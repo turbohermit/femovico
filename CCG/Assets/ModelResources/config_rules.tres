@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ConfigRules" load_steps=2 format=3 uid="uid://ci0805bhasx5p"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Configs/ConfigRules.gd" id="1_3e487"]
+
+[resource]
+script = ExtResource("1_3e487")
+PlayerAmount = 3
+MRID = ""

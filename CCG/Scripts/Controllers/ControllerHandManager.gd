@@ -33,7 +33,6 @@ func on_initialized():
 	m_handView = kickstart("VIEW_HAND", m_config.HandViewScene)
 
 func change_order(p_viewToInsert: ViewCard, p_viewToShift: ViewCard):
-	print("changy")
 	var container: Node = m_handView.HandContainer
 	var newIndex: int = p_viewToShift.get_index()
 	m_handView.HandContainer.move_child(p_viewToInsert, newIndex)
