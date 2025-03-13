@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ConfigDeck" load_steps=4 format=3 uid="uid://dalgi11ixl675"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Configs/ConfigDeck.gd" id="1_gsfnk"]
+[ext_resource type="PackedScene" uid="uid://uv5kckw2tppx" path="res://CCG/Assets/Scenes/ViewScenes/view_deck.tscn" id="1_syr3e"]
+[ext_resource type="Resource" uid="uid://bd8d45fsto426" path="res://CCG/Assets/ModelResources/deck_default.tres" id="2_yfe6t"]
+
+[resource]
+script = ExtResource("1_gsfnk")
+StartingDeck = ExtResource("2_yfe6t")
+DeckViewScene = ExtResource("1_syr3e")
+MRID = ""

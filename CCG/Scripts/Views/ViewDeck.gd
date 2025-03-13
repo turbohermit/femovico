@@ -2,9 +2,7 @@ class_name ViewDeck
 extends AView
 
 @export_category("Nodes")
-# @export var YourReferences
+@export var CardCountLabel: Label 
 
-func _ready():
-	pass
-
-# func update(p_model: YourModel):
+func update(p_deck: ModelResourceDeck):
+	CardCountLabel.text = str(p_deck.CardCount)

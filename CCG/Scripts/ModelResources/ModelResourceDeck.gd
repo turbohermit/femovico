@@ -1,8 +1,14 @@
 class_name ModelResourceDeck
 extends AModelResource
 
+# Serialized
 @export var Cards: Array[ModelResourceCard]
 
+# Accessors
+var CardCount: int:
+	get: return m_instances.size()
+
+# Private
 var m_instances: Array[ModelResourceCard]
 
 signal on_order_changed

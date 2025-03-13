@@ -3,17 +3,11 @@ extends AFeature
 
 # Model Resources
 @export var HandConfig: ConfigHand
-@export var StartingDeck: ModelResourceDeck
-
-# View Scenes
+@export var DeckConfig: ConfigDeck
 
 # Model Instances
 var m_modelHand: ModelHand
 var m_modelTurnOrder: ModelTurnOrder
-
-# Views
-
-# Controllers
 
 func init_models():
 	m_modelHand = ModelHand.new()
@@ -27,10 +21,10 @@ func init_controllers():
 	kickstart(ControllerCardDrawer.new(
 			m_modelTurnOrder,
 			m_modelHand,
-			StartingDeck)
+			DeckConfig)
 	)
 
 func on_initialized():
-	StartingDeck.instantiate()
-	StartingDeck.shuffle()
+	DeckConfig.StartingDeck.instantiate()
+	DeckConfig.StartingDeck.shuffle()
 	m_modelTurnOrder.iterate()
