@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpqw6ihhyjyk0"]
+[gd_scene load_steps=4 format=3 uid="uid://dpqw6ihhyjyk0"]
 
 [ext_resource type="Script" path="res://CCG/Scripts/Views/ViewCard.gd" id="1_xwold"]
 [ext_resource type="Texture2D" uid="uid://dr2tobv5jt0cq" path="res://CCG/Assets/Sprites/tex_sprite_card_default.png" id="2_qo3pa"]
+[ext_resource type="Texture2D" uid="uid://cvdsot11gl46g" path="res://CCG/Assets/Sprites/tex_sprite_card_glow.png" id="3_bdab3"]
 
-[node name="ViewCard" type="TextureRect" node_paths=PackedStringArray("ParentNode", "TitleLabel")]
+[node name="ViewCard" type="TextureRect" node_paths=PackedStringArray("ParentNode", "TitleLabel", "HoverNode")]
 custom_minimum_size = Vector2(150, 212)
 offset_right = 150.0
 offset_bottom = 212.0
+pivot_offset = Vector2(75, 106)
 size_flags_horizontal = 6
 size_flags_vertical = 0
 texture = ExtResource("2_qo3pa")
@@ -14,6 +16,8 @@ expand_mode = 1
 script = ExtResource("1_xwold")
 ParentNode = NodePath(".")
 TitleLabel = NodePath("TitleLabel")
+HoverNode = NodePath("HoverVisual")
+HoverSize = 1.1
 
 [node name="TitleLabel" type="RichTextLabel" parent="."]
 self_modulate = Color(0, 0, 0, 1)
@@ -25,10 +29,10 @@ anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]Card Name That Be Pretty Long![/center]"
+text = "[center]Card Name That Be Pretty Long!"
 scroll_active = false
 
-[node name="Visual" type="TextureRect" parent="."]
+[node name="CardArt" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.2
@@ -36,3 +40,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HoverVisual" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.898039, 1, 0.858824, 0.745098)
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bdab3")
+expand_mode = 1
