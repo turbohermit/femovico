@@ -10,7 +10,7 @@ offset_right = 150.0
 offset_bottom = 212.0
 pivot_offset = Vector2(75, 106)
 size_flags_horizontal = 6
-size_flags_vertical = 0
+size_flags_vertical = 8
 texture = ExtResource("2_qo3pa")
 expand_mode = 1
 script = ExtResource("1_xwold")
@@ -28,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[center]Card Name That Be Pretty Long!"
 scroll_active = false
@@ -40,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HoverVisual" type="TextureRect" parent="."]
 visible = false
