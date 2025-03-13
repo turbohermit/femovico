@@ -27,6 +27,9 @@ func _ready():
 func update(p_card: ModelResourceCard):
 	TitleLabel.text = str(BBCODE_CENTER, p_card.DisplayNameKey)
 
+func update_drag(p_position: Vector2):
+	ParentNode.position = p_position - ParentNode.pivot_offset
+
 func mouse_entered_received():
 	HoverNode.visible = true
 	ParentNode.scale = Vector2.ONE * HoverSize
