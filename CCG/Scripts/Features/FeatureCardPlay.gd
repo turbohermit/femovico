@@ -28,13 +28,13 @@ func init_controllers():
 	kickstart(ControllerHandManager.new(
 		m_modelHand,
 		HandConfig,
-		m_viewInput)
-	)
+		m_viewInput
+	))
 	kickstart(ControllerCardDrawer.new(
 		m_modelTurnOrder,
 		m_modelHand,
-		DeckConfig)
-	)
+		DeckConfig
+	))
 	kickstart(ControllerPhaseHandler.new(
 		m_modelTurnOrder,
 		HudConfig
