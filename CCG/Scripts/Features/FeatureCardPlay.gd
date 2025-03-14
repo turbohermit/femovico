@@ -23,6 +23,9 @@ func init_models():
 	m_modelHand = ModelHand.new()
 	m_modelPlayArea = ModelPlayArea.new()
 	m_modelTurnOrder = ModelTurnOrder.new(RulesConfig.PlayerAmount)
+	
+	DeckConfig.StartingDeck.instantiate()
+	DeckConfig.StartingDeck.shuffle()
 
 func init_views():
 	m_viewInput = m_viewCollection.kickstart("INPUT", InputViewScene)
@@ -51,6 +54,4 @@ func init_controllers():
 	))
 
 func on_initialized():
-	DeckConfig.StartingDeck.instantiate()
-	DeckConfig.StartingDeck.shuffle()
 	m_modelTurnOrder.iterate()

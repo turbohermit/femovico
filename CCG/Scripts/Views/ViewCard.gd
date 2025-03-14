@@ -5,10 +5,10 @@ extends ADropView
 @export_category("Nodes")
 @export var ParentNode: Control
 @export var TitleLabel: RichTextLabel
-@export var HoverNode: Control
 
 @export_category("Visuals")
 @export var HoverSize: float = 1.2
+@export var HoverVisualNode: Control
 
 # Constants
 const BBCODE_CENTER: String = "[center]"
@@ -20,13 +20,6 @@ var m_dragging: bool = false
 # Signals
 signal on_drag_start(p_view: ViewCard)
 
-func on_initialized():
-	if m_dragging:
-		return
-	
-	ParentNode.mouse_entered.connect(mouse_entered_received)
-	ParentNode.mouse_exited.connect(mouse_exited_received)
-
 func update(p_card: ModelResourceCard):
 	TitleLabel.text = str(BBCODE_CENTER, p_card.DisplayNameKey)
 
@@ -37,7 +30,7 @@ func update_drag(p_position: Vector2):
 	ParentNode.z_index = 2
 
 func on_hovered(p_state: bool):
-	HoverNode.visible = p_state
+	HoverVisualNode.visible = p_state
 	ParentNode.scale = Vector2.ONE * (HoverSize if p_state else 1.0)
 	ParentNode.z_index = 1 if p_state else 0
 	m_hovering = p_state

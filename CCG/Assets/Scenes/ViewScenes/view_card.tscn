@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dr2tobv5jt0cq" path="res://CCG/Assets/Sprites/tex_sprite_card_default.png" id="2_qo3pa"]
 [ext_resource type="Texture2D" uid="uid://cvdsot11gl46g" path="res://CCG/Assets/Sprites/tex_sprite_card_glow.png" id="3_bdab3"]
 
-[node name="ViewCard" type="TextureRect" node_paths=PackedStringArray("ParentNode", "TitleLabel", "HoverNode")]
+[node name="ViewCard" type="TextureRect" node_paths=PackedStringArray("ParentNode", "TitleLabel", "HoverVisualNode", "HoverNode")]
 custom_minimum_size = Vector2(150, 212)
 offset_right = 150.0
 offset_bottom = 212.0
@@ -16,8 +16,9 @@ expand_mode = 1
 script = ExtResource("1_xwold")
 ParentNode = NodePath(".")
 TitleLabel = NodePath("TitleLabel")
-HoverNode = NodePath("HoverVisual")
 HoverSize = 1.1
+HoverVisualNode = NodePath("HoverVisual")
+HoverNode = NodePath(".")
 
 [node name="TitleLabel" type="RichTextLabel" parent="."]
 self_modulate = Color(0, 0, 0, 1)

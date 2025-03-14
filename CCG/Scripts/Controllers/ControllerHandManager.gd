@@ -31,17 +31,22 @@ p_inputView: ViewInput):
 func on_initialized():
 	m_handView = kickstart("VIEW_HAND", m_config.HandViewScene)
 
-func change_order(p_viewToInsert: ViewCard, p_viewToShift: ViewCard):
-	var newIndex: int = p_viewToShift.get_index()
-	m_handView.HandContainer.move_child(p_viewToInsert, newIndex)
-
 func drop_action(p_dropView: ADropView):
 	match p_dropView.get_script():
 		ViewCard:
 			var originalView: ViewCard = m_viewCollection.get_view(m_draggingCard)
 			change_order(originalView, p_dropView)
 		ViewPlayArea:
-			print("feest")
+			play_card(m_draggingCard)
+
+func change_order(p_viewToInsert: ViewCard, p_viewToShift: ViewCard):
+	var newIndex: int = p_viewToShift.get_index()
+	m_handView.HandContainer.move_child(p_viewToInsert, newIndex)
+
+func play_card(p_card: ModelResourceCard):
+	m_hand.remove_card(p_card)
+	p_card.play()
+	m_draggingCard = null
 
 func on_added_received(_p_hand: ModelHand, p_card: ModelResourceCard):
 	if m_viewCollection.has_key(p_card):

@@ -15,4 +15,4 @@ func get_area(p_playerIndex: int) -> Node:
 	return PlayerRow[p_playerIndex]
 
 func on_hovered(p_state: bool):
-	print(p_state)
+	pass
