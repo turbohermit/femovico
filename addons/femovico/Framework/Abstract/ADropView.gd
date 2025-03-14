@@ -7,10 +7,12 @@ signal on_hover_start(p_view: ADropView)
 signal on_hover_end(p_view: ADropView)
 
 func mouse_entered_received():
+	UtilityDragAndDrop.register_view(self)
 	on_hovered(true)
 	on_hover_start.emit(self)
 
 func mouse_exited_received():
+	UtilityDragAndDrop.deregister_view(self)
 	on_hovered(false)
 	on_hover_end.emit(self)
 

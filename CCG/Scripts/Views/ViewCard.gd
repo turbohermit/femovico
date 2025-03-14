@@ -19,7 +19,6 @@ var m_dragging: bool = false
 
 # Signals
 signal on_drag_start(p_view: ViewCard)
-signal on_drag_end(p_view: ViewCard)
 
 func on_initialized():
 	if m_dragging:
@@ -39,7 +38,7 @@ func update_drag(p_position: Vector2):
 
 func on_hovered(p_state: bool):
 	HoverNode.visible = p_state
-	ParentNode.scale = Vector2.ONE * (HoverSize if p_state else 1)
+	ParentNode.scale = Vector2.ONE * (HoverSize if p_state else 1.0)
 	ParentNode.z_index = 1 if p_state else 0
 	m_hovering = p_state
 

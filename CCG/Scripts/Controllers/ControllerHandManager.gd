@@ -13,7 +13,6 @@ var m_handView: ViewHand
 var m_inputView: ViewInput
 var m_draggingCard: ModelResourceCard
 var m_draggingView: ViewCard
-var m_hoveringView: ViewCard
 
 func _init(
 p_hand: ModelHand,
@@ -33,11 +32,18 @@ func on_initialized():
 	m_handView = kickstart("VIEW_HAND", m_config.HandViewScene)
 
 func change_order(p_viewToInsert: ViewCard, p_viewToShift: ViewCard):
-	var container: Node = m_handView.HandContainer
 	var newIndex: int = p_viewToShift.get_index()
 	m_handView.HandContainer.move_child(p_viewToInsert, newIndex)
 
-func on_added_received(p_hand: ModelHand, p_card: ModelResourceCard):
+func drop_action(p_dropView: ADropView):
+	match p_dropView.get_script():
+		ViewCard:
+			var originalView: ViewCard = m_viewCollection.get_view(m_draggingCard)
+			change_order(originalView, p_dropView)
+		ViewPlayArea:
+			print("feest")
+
+func on_added_received(_p_hand: ModelHand, p_card: ModelResourceCard):
 	if m_viewCollection.has_key(p_card):
 		return
 	
@@ -45,10 +51,8 @@ func on_added_received(p_hand: ModelHand, p_card: ModelResourceCard):
 	view.update(p_card)
 	
 	view.on_drag_start.connect(on_drag_start_received)
-	view.on_hover_start.connect(on_hover_start_received)
-	view.on_hover_end.connect(on_hover_end_received)
 
-func on_removed_received(p_hand: ModelHand, p_card: ModelResourceCard):
+func on_removed_received(_p_hand: ModelHand, p_card: ModelResourceCard):
 	if not m_viewCollection.has_key(p_card):
 		return
 	
@@ -69,20 +73,13 @@ func on_drag_release_received():
 		return
 	
 	# If dropped on top of another card in your hand, change the order.
-	if m_hoveringView != null:
-		var originalView: ViewCard = m_viewCollection.get_key(m_draggingView)
-		change_order(originalView, m_hoveringView)
+	var dropView = UtilityDragAndDrop.get_drop_view()
+	if dropView != null:
+		drop_action(dropView)
 	
 	m_draggingView.terminate()
 	m_draggingView = null
 	m_draggingCard = null
-
-func on_hover_start_received(p_view: ADropView):
-	m_hoveringView = p_view
-
-func on_hover_end_received(p_view: ADropView):
-	if p_view == m_hoveringView:
-		m_hoveringView = null
 
 func on_drag_position_received(p_position: Vector2):
 	if m_draggingView == null:

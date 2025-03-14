@@ -1,5 +1,5 @@
 class_name ViewHand
-extends AView
+extends ADropView
 
 @export_category("Nodes")
 @export var HandContainer: Container
