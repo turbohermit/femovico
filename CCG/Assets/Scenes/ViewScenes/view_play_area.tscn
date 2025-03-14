@@ -15,6 +15,15 @@ anchor_bottom = 0.65
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="Control"]
+modulate = Color(1, 0.509804, 1, 0.341176)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PlayerAreasContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15

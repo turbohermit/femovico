@@ -28,6 +28,13 @@ func init_views():
 	m_viewInput = m_viewCollection.kickstart("INPUT", InputViewScene)
 
 func init_controllers():
+	kickstart(ControllerCardPlayer.new(
+		m_modelTurnOrder,
+		m_modelPlayArea,
+		DeckConfig.StartingDeck,
+		HudConfig,
+		HandConfig
+	))
 	kickstart(ControllerHandManager.new(
 		m_modelHand,
 		HandConfig,
@@ -41,13 +48,6 @@ func init_controllers():
 	kickstart(ControllerPhaseHandler.new(
 		m_modelTurnOrder,
 		HudConfig
-	))
-	kickstart(ControllerCardPlayer.new(
-		m_modelTurnOrder,
-		m_modelPlayArea,
-		DeckConfig.StartingDeck,
-		HudConfig,
-		HandConfig
 	))
 
 func on_initialized():
