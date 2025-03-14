@@ -1,5 +1,5 @@
 class_name ViewCard
-extends AView
+extends ADropView
 
 # Serialized
 @export_category("Nodes")
@@ -20,8 +20,6 @@ var m_dragging: bool = false
 # Signals
 signal on_drag_start(p_view: ViewCard)
 signal on_drag_end(p_view: ViewCard)
-signal on_hover_start(p_view: ViewCard)
-signal on_hover_end(p_view: ViewCard)
 
 func on_initialized():
 	if m_dragging:
@@ -39,19 +37,11 @@ func update_drag(p_position: Vector2):
 	ParentNode.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ParentNode.z_index = 2
 
-func mouse_entered_received():
-	HoverNode.visible = true
-	ParentNode.scale = Vector2.ONE * HoverSize
-	ParentNode.z_index = 1
-	m_hovering = true
-	on_hover_start.emit(self)
-
-func mouse_exited_received():
-	HoverNode.visible = false
-	ParentNode.scale = Vector2.ONE
-	ParentNode.z_index = 0
-	m_hovering = false
-	on_hover_end.emit(self)
+func on_hovered(p_state: bool):
+	HoverNode.visible = p_state
+	ParentNode.scale = Vector2.ONE * (HoverSize if p_state else 1)
+	ParentNode.z_index = 1 if p_state else 0
+	m_hovering = p_state
 
 func _input(p_event: InputEvent):
 	if not m_hovering or not p_event is InputEventMouseButton:

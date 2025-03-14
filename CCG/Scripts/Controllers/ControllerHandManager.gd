@@ -77,10 +77,10 @@ func on_drag_release_received():
 	m_draggingView = null
 	m_draggingCard = null
 
-func on_hover_start_received(p_view: ViewCard):
+func on_hover_start_received(p_view: ADropView):
 	m_hoveringView = p_view
 
-func on_hover_end_received(p_view: ViewCard):
+func on_hover_end_received(p_view: ADropView):
 	if p_view == m_hoveringView:
 		m_hoveringView = null
 
