@@ -8,5 +8,5 @@
 
 [resource]
 script = ExtResource("2_8mbh3")
-Cards = Array[ExtResource("1_akmsw")]([ExtResource("2_vw4et"), ExtResource("3_l7mgv"), ExtResource("4_2m5gu"), ExtResource("2_vw4et"), ExtResource("3_l7mgv"), ExtResource("2_vw4et"), ExtResource("2_vw4et"), ExtResource("2_vw4et")])
+DefaultCards = Array[ExtResource("1_akmsw")]([ExtResource("2_vw4et"), ExtResource("2_vw4et"), ExtResource("2_vw4et"), ExtResource("2_vw4et"), ExtResource("3_l7mgv"), ExtResource("3_l7mgv"), ExtResource("3_l7mgv"), ExtResource("4_2m5gu"), ExtResource("4_2m5gu"), ExtResource("4_2m5gu")])
 MRID = ""

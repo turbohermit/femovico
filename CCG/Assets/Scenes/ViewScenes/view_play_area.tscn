@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7le05dttley7"]
+
+[ext_resource type="Script" path="res://CCG/Scripts/Views/ViewPlayArea.gd" id="1_q4yqh"]
+
+[node name="ViewPlayArea" type="Node" node_paths=PackedStringArray("PlayerAreasContainer", "PlayerRow")]
+script = ExtResource("1_q4yqh")
+PlayerAreasContainer = NodePath("Control/PlayerAreasContainer")
+PlayerRow = [NodePath("Control/PlayerAreasContainer/Player1Row"), NodePath("Control/PlayerAreasContainer/Player2Row"), NodePath("Control/PlayerAreasContainer/Player3Row"), NodePath("Control/PlayerAreasContainer/Player4Row")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.65
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerAreasContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player4Row" type="HBoxContainer" parent="Control/PlayerAreasContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Player3Row" type="HBoxContainer" parent="Control/PlayerAreasContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Player2Row" type="HBoxContainer" parent="Control/PlayerAreasContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Player1Row" type="HBoxContainer" parent="Control/PlayerAreasContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 10

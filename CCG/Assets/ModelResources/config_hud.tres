@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ConfigHud" load_steps=3 format=3 uid="uid://ddu7bnoqpap17"]
+[gd_resource type="Resource" script_class="ConfigHud" load_steps=4 format=3 uid="uid://ddu7bnoqpap17"]
 
 [ext_resource type="PackedScene" uid="uid://dxxdj80skalmq" path="res://CCG/Assets/Scenes/ViewScenes/view_phase_indicator.tscn" id="1_fta7y"]
 [ext_resource type="Script" path="res://CCG/Scripts/Configs/ConfigHud.gd" id="1_m7tfj"]
+[ext_resource type="PackedScene" uid="uid://b7le05dttley7" path="res://CCG/Assets/Scenes/ViewScenes/view_play_area.tscn" id="2_b76fp"]
 
 [resource]
 script = ExtResource("1_m7tfj")
 PhaseIndicatorViewScene = ExtResource("1_fta7y")
+PlayAreaViewScene = ExtResource("2_b76fp")
 MRID = ""

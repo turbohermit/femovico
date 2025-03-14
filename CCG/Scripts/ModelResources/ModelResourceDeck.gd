@@ -2,11 +2,13 @@ class_name ModelResourceDeck
 extends AModelResource
 
 # Serialized
-@export var Cards: Array[ModelResourceCard]
+@export var DefaultCards: Array[ModelResourceCard]
 
 # Accessors
 var CardCount: int:
 	get: return m_instances.size()
+var Cards: Array[ModelResourceCard]:
+	get: return m_instances
 
 # Private
 var m_instances: Array[ModelResourceCard]
@@ -15,8 +17,8 @@ signal on_order_changed
 signal on_empty
 
 func instantiate():
-	for i in Cards.size():
-		var instance: ModelResourceCard = Cards[i].duplicate(true)
+	for i in DefaultCards.size():
+		var instance: ModelResourceCard = DefaultCards[i].duplicate(true)
 		m_instances.append(instance)
 
 func shuffle():

@@ -14,12 +14,14 @@ extends AFeature
 # Model Instances
 var m_modelHand: ModelHand
 var m_modelTurnOrder: ModelTurnOrder
+var m_modelPlayArea: ModelPlayArea
 
 # View Instances
 var m_viewInput: ViewInput
 
 func init_models():
 	m_modelHand = ModelHand.new()
+	m_modelPlayArea = ModelPlayArea.new()
 	m_modelTurnOrder = ModelTurnOrder.new(RulesConfig.PlayerAmount)
 
 func init_views():
@@ -39,6 +41,13 @@ func init_controllers():
 	kickstart(ControllerPhaseHandler.new(
 		m_modelTurnOrder,
 		HudConfig
+	))
+	kickstart(ControllerCardPlayer.new(
+		m_modelTurnOrder,
+		m_modelPlayArea,
+		DeckConfig.StartingDeck,
+		HudConfig,
+		HandConfig
 	))
 
 func on_initialized():
