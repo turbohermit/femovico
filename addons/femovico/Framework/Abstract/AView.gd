@@ -4,7 +4,6 @@ extends Node
 signal on_terminated(p_view: AView)
 
 func _ready():
-	name = str(self, get_class()) 
 	on_initialized()
 
 func _process(p_deltaTime: float):

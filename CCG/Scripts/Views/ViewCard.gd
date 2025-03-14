@@ -23,7 +23,7 @@ signal on_drag_end(p_view: ViewCard)
 signal on_hover_start(p_view: ViewCard)
 signal on_hover_end(p_view: ViewCard)
 
-func _ready():
+func on_initialized():
 	if m_dragging:
 		return
 	

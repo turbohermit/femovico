@@ -8,7 +8,7 @@ extends AView
 
 signal on_end_phase
 
-func _ready():
+func on_initialized():
 	PhaseButton.pressed.connect(on_phase_button_pressed_received)
 
 func update(p_model: ModelTurnOrder):
