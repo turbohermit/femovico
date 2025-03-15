@@ -32,13 +32,16 @@ func on_turn_order_updated_received(p_model: ModelTurnOrder):
 	if p_model.Phase != ModelTurnOrder.EPhase.DRAW:
 		return
 	
-	var cards: Array[ModelResourceCard] = m_deck.draw_cards(3)
+	draw_cards(3)
+	m_turnOrder.iterate()
+
+func draw_cards(p_amount: int):
+	var cards: Array[ModelResourceCard] = m_deck.draw_cards(p_amount)
 	m_deckView.update(m_deck)
 	
 	for card in cards:
 		m_hand.add_card(card)
-	
-	m_turnOrder.iterate()
 
-func execute_effect(p_card: ModelResourceCard, p_effect: AEffect):
-	print(str("Executing ", p_effect.get_script().get_global_name(), ": ", p_effect, " of card ", p_card.DisplayNameKey))
+func execute_effect(_p_card: ModelResourceCard, p_effect: AEffect):
+	var drawEffect: EffectDraw = p_effect as EffectDraw
+	draw_cards(drawEffect.CardAmount)
