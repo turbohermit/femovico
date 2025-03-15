@@ -22,6 +22,7 @@ IDUtility="*res://addons/femovico/Framework/Utility/IDUtility.gd"
 GameStateUtility="*res://addons/femovico/Framework/Utility/GameStateUtility.gd"
 InputUtility="*res://addons/femovico/Framework/Utility/InputUtility.gd"
 UtilityDragAndDrop="*res://addons/femovico/Framework/Utility/UtilityDragAndDrop.gd"
+UtilityReaction="*res://CCG/Scripts/Utility/UtilityReaction.gd"
 
 [editor_plugins]
 

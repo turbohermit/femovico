@@ -18,7 +18,7 @@ signal on_empty
 
 func instantiate():
 	for i in DefaultCards.size():
-		var instance: ModelResourceCard = DefaultCards[i].duplicate(true)
+		var instance: ModelResourceCard = DefaultCards[i].instantiate()
 		m_instances.append(instance)
 
 func shuffle():
