@@ -14,5 +14,5 @@ func update(_p_model: ModelPlayArea):
 func get_area(p_playerIndex: int) -> Node:
 	return PlayerRow[p_playerIndex]
 
-func on_hovered(p_state: bool):
+func on_hovered(_p_state: bool):
 	pass
