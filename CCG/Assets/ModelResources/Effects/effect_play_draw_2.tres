@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModelResourceReaction" load_steps=5 format=3 uid="uid://dguep734soi76"]
+
+[ext_resource type="Script" path="res://addons/femovico/Framework/Abstract/AEffect.gd" id="1_hinto"]
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/Effects/EffectDraw.gd" id="2_tg1k8"]
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceReaction.gd" id="3_5p6ti"]
+
+[sub_resource type="Resource" id="Resource_62qhj"]
+script = ExtResource("2_tg1k8")
+CardAmount = 2
+MRID = ""
+
+[resource]
+script = ExtResource("3_5p6ti")
+Trigger = 1
+Effects = Array[ExtResource("1_hinto")]([SubResource("Resource_62qhj")])
+MRID = ""

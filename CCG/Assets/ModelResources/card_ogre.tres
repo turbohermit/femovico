@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="ModelResourceCard" load_steps=2 format=3 uid="uid://04bbtn1dvmp3"]
+[gd_resource type="Resource" script_class="ModelResourceCard" load_steps=4 format=3 uid="uid://04bbtn1dvmp3"]
 
+[ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceReaction.gd" id="1_i16lk"]
 [ext_resource type="Script" path="res://CCG/Scripts/ModelResources/ModelResourceCard.gd" id="1_y4tib"]
+[ext_resource type="Resource" uid="uid://dguep734soi76" path="res://CCG/Assets/ModelResources/Effects/effect_play_draw_2.tres" id="2_fpny5"]
 
 [resource]
 script = ExtResource("1_y4tib")
 DisplayNameKey = &"Ogre"
+Reactions = Array[ExtResource("1_i16lk")]([ExtResource("2_fpny5")])
 MRID = ""

@@ -1,5 +1,5 @@
 class_name ControllerCardDrawer
-extends AController
+extends AEffectController
 
 # Models
 var m_turnOrder: ModelTurnOrder
@@ -9,6 +9,8 @@ var m_deck: ModelResourceDeck
 
 # Views
 var m_deckView: ViewDeck
+
+func effect_type() -> Script: return EffectDraw
 
 func _init(
 p_turnOrder: ModelTurnOrder,
@@ -20,6 +22,7 @@ p_config: ConfigDeck):
 	m_deck = p_config.StartingDeck
 	
 	m_turnOrder.on_updated.connect(on_turn_order_updated_received)
+	register_effects()
 
 func on_initialized():
 	m_deckView = kickstart(m_deck, m_config.DeckViewScene)
@@ -36,3 +39,6 @@ func on_turn_order_updated_received(p_model: ModelTurnOrder):
 		m_hand.add_card(card)
 	
 	m_turnOrder.iterate()
+
+func execute_effect(p_card: ModelResourceCard, p_effect: AEffect):
+	print(str("Executing ", p_effect.get_script().get_global_name(), ": ", p_effect, " of card ", p_card.DisplayNameKey))
