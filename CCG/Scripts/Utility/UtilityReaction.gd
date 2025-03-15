@@ -5,7 +5,8 @@ enum ETrigger
 	NONE,
 	ON_PLAY,
 	ON_DRAW,
-	ON_DISCARD
+	ON_DISCARD,
+	ON_DESTROY
 }
 
 var m_cards: Array[ModelResourceCard]

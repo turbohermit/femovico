@@ -6,6 +6,13 @@ extends AModelResource
 @export var Trigger: UtilityReaction.ETrigger
 @export var Effects: Array[AEffect]
 
-func activate():
+func instantiate() -> ModelResourceReaction:
+	var instance: ModelResourceReaction = self.duplicate(true)
 	for i in Effects.size():
-		Effects[i].activate()
+		instance.Effects[i] = Effects[i].duplicate(true)
+	
+	return instance
+
+func activate(p_card: ModelResourceCard):
+	for i in Effects.size():
+		Effects[i].activate(p_card)

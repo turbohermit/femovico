@@ -3,7 +3,7 @@
 class_name AEffect
 extends AModelResource
 
-signal on_activated(p_effect: AEffect)
+signal on_activated(p_card: ModelResourceCard, p_effect: AEffect)
 
-func activate():
-	on_activated.emit(self)
+func activate(p_card: ModelResourceCard):
+	on_activated.emit(p_card, self)
