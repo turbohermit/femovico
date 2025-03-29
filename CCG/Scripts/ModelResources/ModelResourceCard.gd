@@ -4,6 +4,10 @@ extends AModelResource
 @export_category("Display")
 @export var DisplayNameKey: StringName = "Card"
 
+@export_category("Supplies")
+@export var Cost: ModelResourceCost
+@export var SupplyContainer: ModelResourceSupplyContainer
+
 @export_category("Reactions")
 @export var Reactions: Array[ModelResourceReaction]
 
@@ -14,6 +18,7 @@ signal on_discard(p_card: ModelResourceCard)
 
 func instantiate() -> ModelResourceCard:
 	var instance: ModelResourceCard = self.duplicate(true)
+	instance.SupplyContainer = SupplyContainer.instantiate()
 	for i in Reactions.size():
 		instance.Reactions[i] = Reactions[i].instantiate()
 	
