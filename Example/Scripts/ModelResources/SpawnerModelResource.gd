@@ -6,9 +6,11 @@ extends AModelResource
 @export var MaximumLivingSpawns: int = 50
 @export var MaximumRange: float = 100
 
-# Replace with your own data.
 @export_category("Creatures")
 @export var Creatures: Array[CreatureModelResource]
+
+@export_category("View Scenes")
+@export var EnemyViewScene: PackedScene
 
 var CreatureCount:
 	get:

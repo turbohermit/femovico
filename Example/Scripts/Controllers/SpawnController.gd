@@ -7,13 +7,7 @@ var m_spawnerResource: SpawnerModelResource
 # Models
 var m_spawnerModel: SpawnerModel
 
-# View Scene
-var m_enemySceneView: PackedScene
-
 # Virtual implementations.
-func _init(p_enemySceneView: PackedScene):
-	m_enemySceneView = p_enemySceneView
-
 func on_models():
 	m_spawnerModel = Models.fetch(SpawnerModel)
 	m_spawnerResource = Models.fetch(SpawnerModelResource)
@@ -30,7 +24,7 @@ func spawn(p_liveEnemies: LiveEnemiesModel):
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
-	var view: EnemyView = kickstart(model, m_enemySceneView, m_root)
+	var view: EnemyView = kickstart(model, m_spawnerResource.EnemyViewScene, m_root)
 	
 	view.on_clicked.connect(on_clicked_received)
 	model.on_knocked_out.connect(on_knocked_out_received)
