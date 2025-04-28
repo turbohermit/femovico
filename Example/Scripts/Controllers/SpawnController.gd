@@ -11,12 +11,13 @@ var m_spawnerModel: SpawnerModel
 var m_enemySceneView: PackedScene
 
 # Virtual implementations.
-func _init(p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
+func _init(p_enemySceneView: PackedScene):
 	m_enemySceneView = p_enemySceneView
-	m_spawnerResource = p_spawnerResource
 
 func on_models():
 	m_spawnerModel = Models.fetch(SpawnerModel)
+	m_spawnerResource = Models.fetch(SpawnerModelResource)
+	
 	m_spawnerModel.update(m_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
 

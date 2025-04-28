@@ -7,12 +7,15 @@ extends AFeature
 @export_category("View Scenes")
 @export var EnemyViewScene: PackedScene
 
+func init_models():
+	Models.kickstart_model_resource(SpawnerResource)
+
 func init_controllers():
 	kickstart(
-		SpawnController.new(SpawnerResource, EnemyViewScene)
+		SpawnController.new(EnemyViewScene)
 	)
 	kickstart(
-		MovementController.new(SpawnerResource)
+		MovementController.new()
 	)
 	kickstart(
 		HealthController.new()
