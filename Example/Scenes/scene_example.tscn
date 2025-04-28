@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://6fskhp6twmst"]
 
-[ext_resource type="Script" uid="uid://c27r0sk1y7mka" path="res://addons/femovico/Framework/Utility/FeatureInitializer.gd" id="1_0wae2"]
+[ext_resource type="Script" uid="uid://c27r0sk1y7mka" path="res://addons/femovico/Framework/Nodes/FeatureInitializer.gd" id="1_0wae2"]
 [ext_resource type="Script" uid="uid://b06u4jf55oqqo" path="res://addons/femovico/Framework/Abstract/AFeature.gd" id="2_fk5bb"]
 [ext_resource type="Resource" uid="uid://cxk12w7xpbrn4" path="res://Example/Features/feature_combat.tres" id="2_r6ppa"]
 
