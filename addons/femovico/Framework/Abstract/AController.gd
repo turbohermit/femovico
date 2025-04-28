@@ -1,6 +1,7 @@
 # AController is the base class for Controllers. 
 # Controllers should only execute business logic between Models and Views.
 class_name AController
+extends RefCounted
 
 # "Protected"
 var Views: ViewCollection
