@@ -18,7 +18,7 @@ func _ready():
 	ClickableArea.mouse_entered.connect(area_entered_received)
 	ClickableArea.mouse_exited.connect(area_exited_received)
 
-func update(p_model: EnemyModel):
+func update(p_model: ModelEnemy):
 	Visual.modulate = HealthGradient.sample(p_model.NormalizedHealth)
 	Visual.position = p_model.Position
 	Visual.scale = Vector2(p_model.Scale, p_model.Scale)

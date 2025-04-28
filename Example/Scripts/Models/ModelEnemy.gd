@@ -1,41 +1,39 @@
-class_name EnemyModel
+class_name ModelEnemy
 extends AModel
 
 # It's good practice for Models to have strict public and private accessors.
 # This is to prevent Views or Controllers from manipulating data outside of their responsibility.
+
+#  Accesors
+var NormalizedHealth:
+	get:
+		return (1.0 / m_maxHealth) * m_currentHealth
+var Position:
+	get:
+		return m_position
+var Origin:
+	get:
+		return m_origin
+var Speed:
+	get:
+		return m_speed
+var Scale:
+	get:
+		return m_scale
+
+# Private
 var m_position: Vector2
 var m_origin: Vector2
 var m_speed: float
 var m_timeValue: float
 var m_scale: float
-
 var m_currentHealth: int
 var m_maxHealth: int
 
-# Typically Views should only Get data from Models, and never set any,
-var NormalizedHealth:
-	get:
-		return (1.0 / m_maxHealth) * m_currentHealth
-
-var Position:
-	get:
-		return m_position
-
-var Origin:
-	get:
-		return m_origin
-
-var Speed:
-	get:
-		return m_speed
-
-var Scale:
-	get:
-		return m_scale
-
-signal on_updated(p_model: EnemyModel)
-signal on_targeted(p_model: EnemyModel)
-signal on_knocked_out(p_model: EnemyModel)
+# Signals
+signal on_updated(p_model: ModelEnemy)
+signal on_targeted(p_model: ModelEnemy)
+signal on_knocked_out(p_model: ModelEnemy)
 
 func _init(p_resource: CreatureModelResource):
 	m_currentHealth = p_resource.Health

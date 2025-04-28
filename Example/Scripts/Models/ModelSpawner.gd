@@ -1,4 +1,4 @@
-class_name SpawnerModel
+class_name ModelSpawner
 extends AModel
 
 # Private

@@ -5,11 +5,11 @@ extends AController
 var m_spawnerResource: SpawnerModelResource
 
 # Models
-var m_spawnerModel: SpawnerModel
+var m_spawnerModel: ModelSpawner
 
 # Virtual implementations.
 func on_models():
-	m_spawnerModel = Models.fetch(SpawnerModel)
+	m_spawnerModel = Models.fetch(ModelSpawner)
 	m_spawnerResource = Models.fetch(SpawnerModelResource)
 	
 	m_spawnerModel.update(m_spawnerResource)
@@ -18,12 +18,12 @@ func on_models():
 func update_tick(p_deltaTime: float):
 	m_spawnerModel.update_tick(p_deltaTime)
 
-func spawn(p_liveEnemies: LiveEnemiesModel):
-	var random = Models.fetch(RandomModel)
+func spawn(p_liveEnemies: ModelLiveEnemies):
+	var random = Models.fetch(ModelRandom)
 	var index = random.range(m_spawnerResource.CreatureCount)
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
-	var model: EnemyModel = EnemyModel.new(creature)
+	var model: ModelEnemy = ModelEnemy.new(creature)
 	var view: EnemyView = kickstart(model, m_spawnerResource.EnemyViewScene, m_root)
 	
 	view.on_clicked.connect(on_clicked_received)
@@ -34,13 +34,13 @@ func spawn(p_liveEnemies: LiveEnemiesModel):
 
 # Signal implementations.
 func on_spawn_received():
-	var liveEnemies: LiveEnemiesModel = Models.fetch(LiveEnemiesModel)
+	var liveEnemies: ModelLiveEnemies = Models.fetch(ModelLiveEnemies)
 	if liveEnemies.Count >= m_spawnerResource.MaximumLivingSpawns:
 		return
 	
 	spawn(liveEnemies)
 
-func on_updated_received(p_model: EnemyModel):
+func on_updated_received(p_model: ModelEnemy):
 	if not Views.has_model(p_model):
 		return
 	
@@ -55,7 +55,7 @@ func on_clicked_received(p_view: EnemyView):
 	var model = Views.get_key(p_view)
 	model.target()
 
-func on_knocked_out_received(p_model: EnemyModel):
+func on_knocked_out_received(p_model: ModelEnemy):
 	if not Views.has_model(p_model):
 		print(str("No key found in dictionary for value: ", p_model))
 		return

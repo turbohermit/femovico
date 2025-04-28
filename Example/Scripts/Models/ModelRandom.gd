@@ -1,6 +1,7 @@
-class_name RandomModel
+class_name ModelRandom
 extends AModel
 
+# Private
 var m_generator: RandomNumberGenerator
 
 func _init():
