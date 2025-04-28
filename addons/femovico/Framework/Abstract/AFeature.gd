@@ -4,7 +4,7 @@
 class_name AFeature
 extends Resource
 
-# Instanced
+# "Private"
 var m_root: Node
 var m_controllers: Array[AController]
 var m_subfeatures: Array[AFeature]
@@ -29,7 +29,7 @@ func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
 # Creates and tracks Controller instaces from the Feature.
 func kickstart(p_controller: AController):
 	p_controller.m_root = m_root
-	p_controller.m_viewCollection = ViewCollection.new(m_root)
+	p_controller.Views = ViewCollection.new(m_root)
 	p_controller.on_initialized()
 	p_controller.on_terminated.connect(on_controller_terminated_received)
 	m_controllers.append(p_controller)
