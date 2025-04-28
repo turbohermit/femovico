@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="CreatureModelResource" load_steps=2 format=3 uid="uid://48dlq0e8jgu1"]
 
-[ext_resource type="Script" path="res://Example/Scripts/ModelResources/CreatureModelResource.gd" id="1_fb2ee"]
+[ext_resource type="Script" uid="uid://cbrsck8maqita" path="res://Example/Scripts/ModelResources/CreatureModelResource.gd" id="1_fb2ee"]
 
 [resource]
 script = ExtResource("1_fb2ee")
 Health = 2
 Speed = 0.85
 Scale = 0.25
+MRID = ""

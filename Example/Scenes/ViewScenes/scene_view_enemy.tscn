@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c87b7mxysjl62"]
 
-[ext_resource type="Script" path="res://Example/Scripts/Views/EnemyView.gd" id="1_71lbc"]
+[ext_resource type="Script" uid="uid://ct05v6oc0gua2" path="res://Example/Scripts/Views/EnemyView.gd" id="1_71lbc"]
 [ext_resource type="Texture2D" uid="uid://m736e55np51" path="res://icon.svg" id="2_n6uch"]
 
 [sub_resource type="Gradient" id="Gradient_0q63b"]
