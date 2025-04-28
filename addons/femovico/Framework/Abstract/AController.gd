@@ -26,7 +26,11 @@ func terminate(p_signal: bool = true):
 func kickstart(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
 	return Views.kickstart(p_key, p_viewScene, p_parent)
 
-# Called after _init and m_root is assigned.
+# Called after _init and m_root is assigne..
+func on_models():
+	pass
+
+# Called after _init, m_root is assigned and models are fetched.
 func on_initialized():
 	pass
 

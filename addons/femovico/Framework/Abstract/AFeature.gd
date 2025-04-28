@@ -36,6 +36,7 @@ func kickstart(p_controller: AController):
 	m_controllers.append(p_controller)
 	p_controller.on_terminated.connect(on_controller_terminated_received)
 	
+	p_controller.on_models()
 	p_controller.on_initialized()
 	return p_controller
 
