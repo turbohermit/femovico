@@ -1,4 +1,4 @@
-class_name MovementController
+class_name ContMovement
 extends AController
 
 # Models

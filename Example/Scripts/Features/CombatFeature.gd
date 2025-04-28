@@ -11,6 +11,6 @@ func init_models():
 	Models.kickstart_model_resource(SpawnerResource)
 
 func init_controllers():
-	kickstart(SpawnController.new())
-	kickstart(MovementController.new())
-	kickstart(HealthController.new())
+	kickstart(ContSpawn.new())
+	kickstart(ContMovement.new())
+	kickstart(ContHealth.new())

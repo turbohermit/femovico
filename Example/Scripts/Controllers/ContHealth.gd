@@ -1,4 +1,4 @@
-class_name HealthController
+class_name ContHealth
 extends AController
 
 # Virtual implementations.

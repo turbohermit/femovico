@@ -1,4 +1,4 @@
-class_name SpawnController
+class_name ContSpawn
 extends AController
 
 # ModelResources
