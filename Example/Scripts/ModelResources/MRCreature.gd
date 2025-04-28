@@ -1,4 +1,4 @@
-class_name CreatureModelResource
+class_name MRCreature
 extends AModelResource
 
 @export_category("Creature Base Stats")

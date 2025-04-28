@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CreatureModelResource" load_steps=2 format=3 uid="uid://c7kojppgegpmn"]
 
-[ext_resource type="Script" uid="uid://cbrsck8maqita" path="res://Example/Scripts/ModelResources/CreatureModelResource.gd" id="1_byl82"]
+[ext_resource type="Script" uid="uid://cbrsck8maqita" path="res://Example/Scripts/ModelResources/MRCreature.gd" id="1_byl82"]
 
 [resource]
 script = ExtResource("1_byl82")

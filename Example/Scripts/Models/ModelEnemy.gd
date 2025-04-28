@@ -35,7 +35,7 @@ signal on_updated(p_model: ModelEnemy)
 signal on_targeted(p_model: ModelEnemy)
 signal on_knocked_out(p_model: ModelEnemy)
 
-func _init(p_resource: CreatureModelResource):
+func _init(p_resource: MRCreature):
 	m_currentHealth = p_resource.Health
 	m_maxHealth = p_resource.Health
 	m_speed = p_resource.Speed

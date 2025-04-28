@@ -2,7 +2,7 @@ class_name CombatFeature
 extends AFeature
 
 @export_category("Model Resources")
-@export var SpawnerResource: SpawnerModelResource
+@export var SpawnerResource: MRSpawner
 
 @export_category("View Scenes")
 @export var EnemyViewScene: PackedScene

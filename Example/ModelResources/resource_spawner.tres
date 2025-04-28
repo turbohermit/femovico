@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpawnerModelResource" load_steps=6 format=3 uid="uid://ck0ubk74ykf2a"]
 
-[ext_resource type="Script" uid="uid://blmk5kcymxn5y" path="res://Example/Scripts/ModelResources/SpawnerModelResource.gd" id="1_eqgg3"]
-[ext_resource type="Script" uid="uid://cbrsck8maqita" path="res://Example/Scripts/ModelResources/CreatureModelResource.gd" id="1_tbfgn"]
+[ext_resource type="Script" uid="uid://blmk5kcymxn5y" path="res://Example/Scripts/ModelResources/MRSpawner.gd" id="1_eqgg3"]
+[ext_resource type="Script" uid="uid://cbrsck8maqita" path="res://Example/Scripts/ModelResources/MRCreature.gd" id="1_tbfgn"]
 [ext_resource type="Resource" uid="uid://c7kojppgegpmn" path="res://Example/ModelResources/resource_creature_beefy.tres" id="1_wpd82"]
 [ext_resource type="Resource" uid="uid://48dlq0e8jgu1" path="res://Example/ModelResources/resource_creature_squishy.tres" id="2_g065w"]
 [ext_resource type="PackedScene" uid="uid://c87b7mxysjl62" path="res://Example/Scenes/ViewScenes/scene_view_enemy.tscn" id="4_boxde"]

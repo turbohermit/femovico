@@ -2,7 +2,7 @@ class_name ContSpawn
 extends AController
 
 # ModelResources
-var m_spawnerResource: SpawnerModelResource
+var m_spawnerResource: MRSpawner
 
 # Models
 var m_spawnerModel: ModelSpawner
@@ -10,7 +10,7 @@ var m_spawnerModel: ModelSpawner
 # Virtual implementations.
 func on_models():
 	m_spawnerModel = Models.fetch(ModelSpawner)
-	m_spawnerResource = Models.fetch(SpawnerModelResource)
+	m_spawnerResource = Models.fetch(MRSpawner)
 	
 	m_spawnerModel.update(m_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
@@ -21,7 +21,7 @@ func update_tick(p_deltaTime: float):
 func spawn(p_liveEnemies: ModelLiveEnemies):
 	var random = Models.fetch(ModelRandom)
 	var index = random.range(m_spawnerResource.CreatureCount)
-	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
+	var creature: MRCreature = m_spawnerResource.get_creature(index)
 	
 	var model: ModelEnemy = ModelEnemy.new(creature)
 	var view: EnemyView = kickstart(model, m_spawnerResource.EnemyViewScene, m_root)

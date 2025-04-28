@@ -1,4 +1,4 @@
-class_name SpawnerModelResource
+class_name MRSpawner
 extends AModelResource
 
 @export_category("Spawn Values")
@@ -7,19 +7,20 @@ extends AModelResource
 @export var MaximumRange: float = 100
 
 @export_category("Creatures")
-@export var Creatures: Array[CreatureModelResource]
+@export var Creatures: Array[MRCreature]
 
 @export_category("View Scenes")
 @export var EnemyViewScene: PackedScene
 
+# Accessors
 var CreatureCount:
 	get:
 		return Creatures.size()
 
 # It's good practice to seperate runtime Model instances from ModelResources,
 # So you don't accidentally change serialized values.
-# Having some functions to Get data in a specific way is fine though!
-func get_creature(p_index: int) -> CreatureModelResource:
+# Having some helper functions to get data in a specific way is fine though!
+func get_creature(p_index: int) -> MRCreature:
 	if Creatures.size() == 0:
 		print(str("No creatures assigned!"))
 		return null

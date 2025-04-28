@@ -8,7 +8,7 @@ var m_spawnTime: float
 # Signals
 signal on_spawn
 
-func update(p_resource: SpawnerModelResource):
+func update(p_resource: MRSpawner):
 	m_spawnTime = p_resource.TimeBeforeSpawn
 	m_countdown = m_spawnTime
 

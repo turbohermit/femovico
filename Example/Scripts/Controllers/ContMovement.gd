@@ -15,7 +15,7 @@ func update_tick(p_deltaTime: float):
 
 # Signal implmentations.
 func on_enemy_added(p_model: ModelEnemy):
-	var spawnerResource: SpawnerModelResource = Models.fetch(SpawnerModelResource)
+	var spawnerResource: MRSpawner = Models.fetch(MRSpawner)
 	var random = Models.fetch(ModelRandom)
 	var point: Vector2 = random.range_2D(spawnerResource.MaximumRange)
 	p_model.set_origin(point)
