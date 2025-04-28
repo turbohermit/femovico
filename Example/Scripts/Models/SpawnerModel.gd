@@ -1,12 +1,14 @@
 class_name SpawnerModel
 extends AModel
 
+# Private
 var m_countdown: float
 var m_spawnTime: float
 
+# Signals
 signal on_spawn
 
-func _init(p_resource: SpawnerModelResource):
+func update(p_resource: SpawnerModelResource):
 	m_spawnTime = p_resource.TimeBeforeSpawn
 	m_countdown = m_spawnTime
 

@@ -1,32 +1,34 @@
 class_name SpawnController
 extends AController
 
-# Models
+# ModelResources
 var m_spawnerResource: SpawnerModelResource
+
+# Models
 var m_spawnerModel: SpawnerModel
-var m_liveEnemiesModel: LiveEnemiesModel
-var m_randomModel: RandomModel
 
 # View Scene
 var m_enemySceneView: PackedScene
 
-func _init(p_liveEnemiesModel: LiveEnemiesModel, p_randomModel: RandomModel, p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
-	m_liveEnemiesModel = p_liveEnemiesModel
-	m_randomModel = p_randomModel
-	m_spawnerResource = p_spawnerResource
+func _init(p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
 	m_enemySceneView = p_enemySceneView
-	
-	m_spawnerModel = SpawnerModel.new(p_spawnerResource)
+	m_spawnerResource = p_spawnerResource
+
+func on_models():
+	m_spawnerModel = Models.get_model(SpawnerModel)
+	m_spawnerModel.update(m_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
 
 func update_tick(p_deltaTime: float):
 	m_spawnerModel.update_tick(p_deltaTime)
 
 func on_spawn_received():
-	if m_liveEnemiesModel.Count >= m_spawnerResource.MaximumLivingSpawns:
+	var liveEnemies: LiveEnemiesModel = Models.get_model(LiveEnemiesModel)
+	if liveEnemies.Count >= m_spawnerResource.MaximumLivingSpawns:
 		return
 	
-	var index = m_randomModel.range(m_spawnerResource.CreatureCount)
+	var random = Models.get_model(RandomModel)
+	var index = random.range(m_spawnerResource.CreatureCount)
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
@@ -35,7 +37,7 @@ func on_spawn_received():
 	model.on_knocked_out.connect(on_knocked_out_received)
 	model.on_updated.connect(on_updated_received)
 	
-	m_liveEnemiesModel.add_enemy(model)
+	liveEnemies.add_enemy(model)
 
 func on_updated_received(p_model: EnemyModel):
 	if not Views.has_model(p_model):
