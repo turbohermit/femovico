@@ -8,35 +8,40 @@ extends Resource
 var m_root: Node
 var m_controllers: Array[AController]
 var m_subfeatures: Array[AFeature]
+var m_modelCollection: ModelCollection
 
 # Signals
 signal on_terminated(p_feature: AFeature)
 
 # Creates and initializes an instance of this Feature Resource and returns it.
 func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
-	var feature = self.duplicate()
+	var instance = self.duplicate()
+	instance.m_root = p_root
+	instance.m_modelCollection = UtilModels.get_collection()
 	
-	feature.m_root = p_root
+	instance.init_parameters(p_optionalParams)
+	instance.init_models()
+	instance.init_controllers()
+	instance.on_initialized()
 	
-	feature.init_parameters(p_optionalParams)
-	feature.init_models()
-	feature.init_controllers()
-	feature.on_initialized()
-	
-	print(str(feature.get_script().get_global_name(), " initialized."))
-	return feature as AFeature
+	print(str(instance.get_script().get_global_name(), " initialized."))
+	return instance as AFeature
 
 # Creates and tracks Controller instaces from the Feature.
 func kickstart(p_controller: AController):
 	p_controller.m_root = m_root
 	p_controller.Views = ViewCollection.new(m_root)
-	p_controller.on_initialized()
-	p_controller.on_terminated.connect(on_controller_terminated_received)
+	p_controller.Models = m_modelCollection
+	
 	m_controllers.append(p_controller)
+	p_controller.on_terminated.connect(on_controller_terminated_received)
+	
+	p_controller.on_initialized()
 	return p_controller
 
 func kickstart_sub_feature(p_feature: AFeature, p_optionalParams: Array[Object] = []):
 	var instance = p_feature.initialize(m_root, p_optionalParams)
+	instance.m_modelCollection = m_modelCollection
 	instance.on_terminated.connect(on_subfeature_terminated_received)
 	m_subfeatures.append(instance)
 	return instance

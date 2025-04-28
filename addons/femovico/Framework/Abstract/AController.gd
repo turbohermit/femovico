@@ -5,6 +5,7 @@ extends RefCounted
 
 # "Protected"
 var Views: ViewCollection
+var Models: ModelCollection
 
 # "Private" 
 var m_root: Node

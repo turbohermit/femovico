@@ -21,6 +21,7 @@ UtilSave="*res://addons/femovico/Framework/Utility/UtilSave.gd"
 UtilID="*res://addons/femovico/Framework/Utility/UtilID.gd"
 UtilGameState="*res://addons/femovico/Framework/Utility/UtilGameState.gd"
 UtilInput="*res://addons/femovico/Framework/Utility/UtilInput.gd"
+UtilModels="*res://addons/femovico/Framework/Utility/UtilModels.gd"
 
 [editor_plugins]
 
