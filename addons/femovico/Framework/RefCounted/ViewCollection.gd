@@ -19,12 +19,12 @@ func _init(p_root: Node):
 # Creates a View by instantiating the input packed scene.
 func kickstart(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
 	if p_viewScene == null:
-		print(str("Supplied view scene is null for key ", p_key))
+		print(str("Kickstarting a null scene. Key: ", p_key))
 		return null
 	
 	var scene = p_viewScene.instantiate()
 	if not scene is AView:
-		print(str("Trying to instantiate a View scene but the scene root is not a View: ", p_viewScene))
+		print(str("Kickstarting a scene that does not inherit from AView: ", p_viewScene))
 		scene.queue_free()
 		return null
 	
