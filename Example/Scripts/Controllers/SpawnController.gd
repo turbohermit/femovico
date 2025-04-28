@@ -38,26 +38,26 @@ func on_spawn_received():
 	m_liveEnemiesModel.add_enemy(model)
 
 func on_updated_received(p_model: EnemyModel):
-	if not m_viewCollection.has_model(p_model):
+	if not Views.has_model(p_model):
 		return
 	
-	var view = m_viewCollection.get_view(p_model)
+	var view = Views.get_view(p_model)
 	view.update(p_model)
 
 func on_clicked_received(p_view: EnemyView):
-	if not m_viewCollection.has_view(p_view):
+	if not Views.has_view(p_view):
 		print(str("View: ", p_view, " not found in dictionary."))
 		return
 	
-	var model = m_viewCollection.get_key(p_view)
+	var model = Views.get_key(p_view)
 	model.target()
 
 func on_knocked_out_received(p_model: EnemyModel):
-	if not m_viewCollection.has_model(p_model):
+	if not Views.has_model(p_model):
 		print(str("No key found in dictionary for value: ", p_model))
 		return
 	
 	p_model.on_updated.disconnect(on_updated_received)
 	p_model.on_knocked_out.disconnect(on_knocked_out_received)
-	var view = m_viewCollection.get_view(p_model)
+	var view = Views.get_view(p_model)
 	view.terminate()
