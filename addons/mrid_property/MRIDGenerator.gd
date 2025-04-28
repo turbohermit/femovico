@@ -11,6 +11,6 @@ func _init(p_objectMRIDValue: String):
 
 func _process(delta):
 	if m_currentValue.is_empty():
-		m_currentValue = IDUtility.generate()
+		m_currentValue = UtilID.generate()
 		emit_changed(get_edited_property(), m_currentValue)
 		m_propertyControl.text = m_currentValue

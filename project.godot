@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SaveUtility="*res://addons/femovico/Framework/Utility/SaveUtility.gd"
-IDUtility="*res://addons/femovico/Framework/Utility/IDUtility.gd"
-GameStateUtility="*res://addons/femovico/Framework/Utility/GameStateUtility.gd"
-InputUtility="*res://addons/femovico/Framework/Utility/InputUtility.gd"
+UtilSave="*res://addons/femovico/Framework/Utility/UtilSave.gd"
+UtilID="*res://addons/femovico/Framework/Utility/UtilID.gd"
+UtilGameState="*res://addons/femovico/Framework/Utility/UtilGameState.gd"
+UtilInput="*res://addons/femovico/Framework/Utility/UtilInput.gd"
 
 [editor_plugins]
 

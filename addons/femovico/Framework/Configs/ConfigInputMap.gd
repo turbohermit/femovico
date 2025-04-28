@@ -14,8 +14,8 @@ var m_pathMap: Dictionary
 var m_enumToString: Dictionary
 
 func initialize():
-	for i in InputUtility.EInputAction.size():
-		var actionKey: StringName = InputUtility.EInputAction.keys()[i].to_lower()
+	for i in UtilInput.EInputAction.size():
+		var actionKey: StringName = UtilInput.EInputAction.keys()[i].to_lower()
 		m_enumToString[i] = actionKey
 	
 	if load_from_disk():
@@ -23,7 +23,7 @@ func initialize():
 	
 	save()
 
-func override_action(p_action: InputUtility.EInputAction, p_event: InputEvent):
+func override_action(p_action: UtilInput.EInputAction, p_event: InputEvent):
 	var actionKey: StringName = m_enumToString[p_action]
 	override_action_with_key(actionKey, p_event)
 	save()
@@ -43,15 +43,15 @@ func reset_input_map():
 	InputMap.load_from_project_settings()
 	save()
 
-func get_action_events(p_action: InputUtility.EInputAction) -> Array:
-	if p_action == InputUtility.EInputAction.UNSPECIFIED:
+func get_action_events(p_action: UtilInput.EInputAction) -> Array:
+	if p_action == UtilInput.EInputAction.UNSPECIFIED:
 		return []
 	
 	var actionKey: StringName = m_enumToString[p_action]
 	return InputMap.action_get_events(actionKey)
 
-func get_action_from_input(p_event: InputEvent) -> InputUtility.EInputAction:
-	var keys: Array = InputUtility.EInputAction.keys()
+func get_action_from_input(p_event: InputEvent) -> UtilInput.EInputAction:
+	var keys: Array = UtilInput.EInputAction.keys()
 	for i in keys.size():
 		# Skip unspecified input
 		if i == 0:
@@ -59,9 +59,9 @@ func get_action_from_input(p_event: InputEvent) -> InputUtility.EInputAction:
 		
 		var actionKey: StringName = m_enumToString[i]
 		if p_event.is_action_pressed(actionKey):
-			return i as InputUtility.EInputAction
+			return i as UtilInput.EInputAction
 	
-	return InputUtility.EInputAction.UNSPECIFIED
+	return UtilInput.EInputAction.UNSPECIFIED
 
 # Virtual functions.
 func read_serializables_from_disk(p_serializables: Array[Variant]):

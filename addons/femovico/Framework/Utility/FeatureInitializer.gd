@@ -16,7 +16,7 @@ func _ready():
 # Can be removed if you want your game to update on a different timescale.
 func _process(p_delta):
 	# If you want to implement custom game pausing behaviour, replace the following lines.
-	if GameStateUtility.Paused:
+	if UtilGameState.Paused:
 		return
 	
 	for feature in m_features:
