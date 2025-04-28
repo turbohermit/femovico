@@ -1,10 +1,12 @@
 class_name HealthController
 extends AController
 
+# Virtual implementations.
 func on_models():
-	var liveEnemies: LiveEnemiesModel = Models.get_model(LiveEnemiesModel)
+	var liveEnemies: LiveEnemiesModel = Models.fetch(LiveEnemiesModel)
 	liveEnemies.on_enemy_added.connect(on_enemy_added)
 
+# Signal implementations.
 func on_enemy_added(p_model: EnemyModel):
 	p_model.on_targeted.connect(on_targeted_received)
 

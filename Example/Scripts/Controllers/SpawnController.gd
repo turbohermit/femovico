@@ -10,34 +10,40 @@ var m_spawnerModel: SpawnerModel
 # View Scene
 var m_enemySceneView: PackedScene
 
+# Virtual implementations.
 func _init(p_spawnerResource: SpawnerModelResource, p_enemySceneView: PackedScene):
 	m_enemySceneView = p_enemySceneView
 	m_spawnerResource = p_spawnerResource
 
 func on_models():
-	m_spawnerModel = Models.get_model(SpawnerModel)
+	m_spawnerModel = Models.fetch(SpawnerModel)
 	m_spawnerModel.update(m_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
 
 func update_tick(p_deltaTime: float):
 	m_spawnerModel.update_tick(p_deltaTime)
 
-func on_spawn_received():
-	var liveEnemies: LiveEnemiesModel = Models.get_model(LiveEnemiesModel)
-	if liveEnemies.Count >= m_spawnerResource.MaximumLivingSpawns:
-		return
-	
-	var random = Models.get_model(RandomModel)
+func spawn(p_liveEnemies: LiveEnemiesModel):
+	var random = Models.fetch(RandomModel)
 	var index = random.range(m_spawnerResource.CreatureCount)
 	var creature: CreatureModelResource = m_spawnerResource.get_creature(index)
 	
 	var model: EnemyModel = EnemyModel.new(creature)
 	var view: EnemyView = kickstart(model, m_enemySceneView, m_root)
+	
 	view.on_clicked.connect(on_clicked_received)
 	model.on_knocked_out.connect(on_knocked_out_received)
 	model.on_updated.connect(on_updated_received)
 	
-	liveEnemies.add_enemy(model)
+	p_liveEnemies.add_enemy(model)
+
+# Signal implementations.
+func on_spawn_received():
+	var liveEnemies: LiveEnemiesModel = Models.fetch(LiveEnemiesModel)
+	if liveEnemies.Count >= m_spawnerResource.MaximumLivingSpawns:
+		return
+	
+	spawn(liveEnemies)
 
 func on_updated_received(p_model: EnemyModel):
 	if not Views.has_model(p_model):
