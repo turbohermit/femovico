@@ -4,20 +4,22 @@
 class_name AFeature
 extends Resource
 
+# "Public"
+var Models: ModelCollection
+
 # "Private"
 var m_root: Node
 var m_controllers: Array[AController]
 var m_subfeatures: Array[AFeature]
-var m_modelCollection: ModelCollection
 
 # Signals
 signal on_terminated(p_feature: AFeature)
 
 # Creates and initializes an instance of this Feature Resource and returns it.
 func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
-	var instance = self.duplicate()
+	var instance: AFeature = self.duplicate()
 	instance.m_root = p_root
-	instance.m_modelCollection = UtilModels.get_collection()
+	instance.Models = UtilModels.get_collection()
 	
 	instance.init_parameters(p_optionalParams)
 	instance.init_models()
@@ -31,7 +33,7 @@ func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
 func kickstart(p_controller: AController):
 	p_controller.m_root = m_root
 	p_controller.Views = ViewCollection.new(m_root)
-	p_controller.Models = m_modelCollection
+	p_controller.Models = Models
 	
 	m_controllers.append(p_controller)
 	p_controller.on_terminated.connect(on_controller_terminated_received)
@@ -42,7 +44,7 @@ func kickstart(p_controller: AController):
 
 func kickstart_sub_feature(p_feature: AFeature, p_optionalParams: Array[Object] = []):
 	var instance = p_feature.initialize(m_root, p_optionalParams)
-	instance.m_modelCollection = m_modelCollection
+	instance.Models = Models
 	instance.on_terminated.connect(on_subfeature_terminated_received)
 	m_subfeatures.append(instance)
 	return instance

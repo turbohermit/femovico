@@ -17,5 +17,13 @@ func fetch(p_modelType: GDScript):
 
 func create_model(p_modelType: GDScript):
 	if m_typeToInstance.has(p_modelType):
-		print(str("Initiazing model of type that already exists: ", p_modelType.get_global_name(), ". Overwriting."))
+		print(str("Initiazing Model of type that already exists: ", p_modelType.get_global_name(), ". Overwriting."))
 	m_typeToInstance[p_modelType] = p_modelType.new()
+
+func kickstart_model_resource(p_resource: AModelResource):
+	var modelType: GDScript = p_resource.get_script()
+	var model = p_resource.instantiate()
+	
+	if m_typeToInstance.has(modelType):
+		print(str("Instantiating ModelResource of type that already exists: ", modelType.get_global_name(), ". Overwriting."))
+	m_typeToInstance[modelType] = model

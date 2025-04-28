@@ -6,3 +6,8 @@ extends Resource
 
 @export_category("Model Resource")
 @export var MRID: String
+
+# "Abstract" functions.
+func instantiate():
+	var instance = self.duplicate()
+	return instance
