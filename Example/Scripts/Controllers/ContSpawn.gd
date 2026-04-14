@@ -15,9 +15,11 @@ func on_models():
 	m_spawnerModel.update(m_spawnerResource)
 	m_spawnerModel.on_spawn.connect(on_spawn_received)
 
+# Arguably this should be from a signal on a model, but whatever.
 func update_tick(p_deltaTime: float):
-	m_spawnerModel.update_tick(p_deltaTime)
+	m_spawnerModel.countdown(p_deltaTime)
 
+# Private funtions.
 func spawn(p_liveEnemies: ModelLiveEnemies):
 	var random = Models.fetch(ModelRandom)
 	var index = random.range(m_spawnerResource.CreatureCount)

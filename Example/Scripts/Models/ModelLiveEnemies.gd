@@ -3,11 +3,9 @@ extends AModel
 
 # Accessors
 var Enemies: Array[ModelEnemy]:
-	get:
-		return m_enemies
+	get: return m_enemies
 var Count: int:
-	get:
-		return m_enemies.size()
+	get: return m_enemies.size()
 
 # Private
 var m_enemies: Array[ModelEnemy]
@@ -15,6 +13,7 @@ var m_enemies: Array[ModelEnemy]
 # Signals
 signal on_enemy_added(p_model: ModelEnemy)
 
+# Public functions.
 func add_enemy(p_model: ModelEnemy):
 	if m_enemies.has(p_model):
 		return

@@ -10,11 +10,14 @@ extends AView
 @export_category("Visuals")
 @export var HealthGradient: Gradient
 
+# Private
+var m_hovering: bool
+
+# Signals
 signal on_clicked(p_view: EnemyView)
 
-var m_hoovering: bool
-
-func _ready():
+# Virtual implementations
+func on_initialized():
 	ClickableArea.mouse_entered.connect(area_entered_received)
 	ClickableArea.mouse_exited.connect(area_exited_received)
 
@@ -24,17 +27,19 @@ func update(p_model: ModelEnemy):
 	Visual.scale = Vector2(p_model.Scale, p_model.Scale)
 
 func _input(p_event):
-	if p_event is InputEventMouseButton and p_event.pressed and p_event.button_index == MOUSE_BUTTON_LEFT and m_hoovering:
+	if p_event is InputEventMouseButton and p_event.pressed and p_event.button_index == MOUSE_BUTTON_LEFT and m_hovering:
 		clicked()
 
+# Private functions.
 func clicked():
 	var tween = get_tree().create_tween()
 	tween.tween_property(Visual, "scale", Vector2.ONE * 0.8, 0.03)
 	
 	on_clicked.emit(self)
 
+# Signal implementations.
 func area_entered_received():
-	m_hoovering = true
+	m_hovering = true
 
 func area_exited_received():
-	m_hoovering = false
+	m_hovering = false

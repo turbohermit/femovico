@@ -14,8 +14,7 @@ extends AModelResource
 
 # Accessors
 var CreatureCount:
-	get:
-		return Creatures.size()
+	get: return Creatures.size()
 
 # It's good practice to seperate runtime Model instances from ModelResources,
 # So you don't accidentally change serialized values.

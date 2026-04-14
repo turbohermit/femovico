@@ -4,22 +4,17 @@ extends AModel
 # It's good practice for Models to have strict public and private accessors.
 # This is to prevent Views or Controllers from manipulating data outside of their responsibility.
 
-#  Accesors
+# Accesors
 var NormalizedHealth:
-	get:
-		return (1.0 / m_maxHealth) * m_currentHealth
+	get: return (1.0 / m_maxHealth) * m_currentHealth
 var Position:
-	get:
-		return m_position
+	get: return m_position
 var Origin:
-	get:
-		return m_origin
+	get: return m_origin
 var Speed:
-	get:
-		return m_speed
+	get: return m_speed
 var Scale:
-	get:
-		return m_scale
+	get: return m_scale
 
 # Private
 var m_position: Vector2
@@ -35,6 +30,7 @@ signal on_updated(p_model: ModelEnemy)
 signal on_targeted(p_model: ModelEnemy)
 signal on_knocked_out(p_model: ModelEnemy)
 
+# Virtual implementations.
 func _init(p_resource: MRCreature):
 	m_currentHealth = p_resource.Health
 	m_maxHealth = p_resource.Health
