@@ -15,7 +15,6 @@ signal on_terminated(p_controller: AController)
 
 # Terminates all views in this controller's ViewCollection and unassigns local variables.
 func terminate(p_signal: bool = true):
-	print(str("Terminating controller: ", get_script().get_global_name()))
 	on_terminate()
 	Views.terminate()
 	Views = null
@@ -26,11 +25,16 @@ func terminate(p_signal: bool = true):
 func kickstart(p_key: Variant, p_viewScene: PackedScene, p_parent: Node = m_root) -> AView:
 	return Views.kickstart(p_key, p_viewScene, p_parent)
 
-# Called after _init and m_root is assigne..
+# Virtual functions.
+# Called after _init and m_root is assigned, but before on_models and on_intialized.
+func on_pre_initialized():
+	pass
+
+# Called after on_pre_initialized.
 func on_models():
 	pass
 
-# Called after _init, m_root is assigned and models are fetched.
+# Called after on_models().
 func on_initialized():
 	pass
 

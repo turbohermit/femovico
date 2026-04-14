@@ -26,7 +26,6 @@ func initialize(p_root: Node, p_optionalParams: Array[Object] = []) -> AFeature:
 	instance.init_controllers()
 	instance.on_initialized()
 	
-	print(str(instance.get_script().get_global_name(), " initialized."))
 	return instance as AFeature
 
 # Creates and tracks Controller instaces from the Feature.
@@ -38,6 +37,7 @@ func kickstart(p_controller: AController):
 	m_controllers.append(p_controller)
 	p_controller.on_terminated.connect(on_controller_terminated_received)
 	
+	p_controller.on_pre_initialized()
 	p_controller.on_models()
 	p_controller.on_initialized()
 	return p_controller
@@ -57,8 +57,6 @@ func update_tick(p_deltaTime: float):
 		subfeature.update_tick(p_deltaTime)
 
 func terminate(p_signal: bool = true):
-	print(str("Terminating feature:", get_script().get_global_name()))
-	
 	var controllerCount = m_controllers.size()
 	for i in controllerCount:
 		m_controllers[i].terminate(false)
@@ -73,17 +71,37 @@ func terminate(p_signal: bool = true):
 	if p_signal:
 		on_terminated.emit(self)
 
-func has_controller_type(p_controllerType: Variant) -> bool:
+func terminate_controllers():
+	for i in range(m_controllers.size() - 1, -1, -1):
+		m_controllers[i].terminate()
+
+func terminate_subfeatures():
+	for i in range(m_subfeatures.size() - 1, -1, -1):
+		m_subfeatures[i].terminate()
+
+func has_controller_type(p_controllerType: GDScript) -> bool:
 	for controller in m_controllers:
 		if is_instance_of(controller, p_controllerType):
 			return true
 	return false
 
-func has_subfeature_type(p_featureType: Variant) -> bool:
+func get_controller_of_type(p_controllerType: GDScript) -> AController:
+	for controller in m_controllers:
+		if is_instance_of(controller, p_controllerType):
+			return controller
+	return null
+
+func has_subfeature_type(p_featureType: GDScript) -> bool:
 	for feature in m_subfeatures:
 		if is_instance_of(feature, p_featureType):
 			return true
 	return false
+
+func get_subfeature_of_type(p_featureType: GDScript) -> AFeature:
+	for feature in m_subfeatures:
+		if is_instance_of(feature, p_featureType):
+			return feature
+	return null
 
 func on_controller_terminated_received(p_controller: AController):
 	m_controllers.erase(p_controller)

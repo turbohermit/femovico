@@ -4,6 +4,7 @@ class_name FeatureInitializer
 extends Node
 
 @export var StartupFeatures: Array[AFeature]
+@export var DebugFeature: AFeature
 
 # Private
 var m_features: Array[AFeature]
@@ -27,6 +28,10 @@ func start_features():
 	var root = get_tree().get_current_scene()
 	for feature in StartupFeatures:
 		var instance = feature.initialize(root)
+		m_features.append(instance)
+	
+	if OS.is_debug_build() && DebugFeature != null:
+		var instance = DebugFeature.initialize(root)
 		m_features.append(instance)
 
 # Returns the first found feature with the input class name.
