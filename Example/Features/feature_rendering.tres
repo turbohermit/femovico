@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RenderingFeature" format=3 uid="uid://dv7gtshv7rhe1"]
+
+[ext_resource type="Script" uid="uid://bbot4xqco5312" path="res://Example/Scripts/Features/RenderingFeature.gd" id="1_0dp8v"]
+[ext_resource type="Resource" uid="uid://dm0pw2vmu37fv" path="res://Example/ModelResources/resource_config_camera.tres" id="1_745cm"]
+
+[resource]
+script = ExtResource("1_0dp8v")
+CameraConfig = ExtResource("1_745cm")
+metadata/_custom_type_script = "uid://bbot4xqco5312"

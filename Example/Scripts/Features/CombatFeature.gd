@@ -4,9 +4,7 @@ extends AFeature
 @export_category("Model Resources")
 @export var SpawnerResource: MRSpawner
 
-@export_category("View Scenes")
-@export var EnemyViewScene: PackedScene
-
+# Virtual implementations.
 func init_models():
 	Models.kickstart_model_resource(SpawnerResource)
 

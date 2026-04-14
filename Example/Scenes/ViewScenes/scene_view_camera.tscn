@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c8rubqtd5ivmp"]
+
+[ext_resource type="Script" uid="uid://53u8w3kn54pc" path="res://Example/Scripts/Views/ViewCamera.gd" id="1_sg3jb"]
+
+[node name="ViewCamera" type="Node" unique_id=674572366]
+script = ExtResource("1_sg3jb")
+metadata/_custom_type_script = "uid://53u8w3kn54pc"
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1450440230]
+script = ExtResource("1_sg3jb")

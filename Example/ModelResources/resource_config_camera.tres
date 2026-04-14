@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MRCameraConfig" format=3 uid="uid://dm0pw2vmu37fv"]
+
+[ext_resource type="Script" uid="uid://bpqu8wtsoqjxb" path="res://Example/Scripts/ModelResources/MRCameraConfig.gd" id="1_6bg55"]
+[ext_resource type="PackedScene" uid="uid://c8rubqtd5ivmp" path="res://Example/Scenes/ViewScenes/scene_view_camera.tscn" id="1_ejfcc"]
+
+[resource]
+script = ExtResource("1_6bg55")
+CameraViewScene = ExtResource("1_ejfcc")
+metadata/_custom_type_script = "uid://bpqu8wtsoqjxb"
