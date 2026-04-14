@@ -14,3 +14,4 @@ func init_controllers():
 	kickstart(ContSpawn.new())
 	kickstart(ContMovement.new())
 	kickstart(ContHealth.new())
+	kickstart(ContEnemyView.new())
