@@ -1,4 +1,4 @@
-class_name EnemyView
+class_name ViewEnemy
 extends AView
 
 # If you want to use any Godot nodes, do so in Views.
@@ -14,7 +14,7 @@ extends AView
 var m_hovering: bool
 
 # Signals
-signal on_clicked(p_view: EnemyView)
+signal on_clicked(p_view: ViewEnemy)
 
 # Virtual implementations
 func on_initialized():

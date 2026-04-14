@@ -21,7 +21,7 @@ func on_updated_received(p_model: ModelEnemy):
 	var view = Views.get_view(p_model)
 	view.update(p_model)
 
-func on_clicked_received(p_view: EnemyView):
+func on_clicked_received(p_view: ViewEnemy):
 	if not Views.has_view(p_view):
 		print(str("View: ", p_view, " not found in dictionary."))
 		return
@@ -43,7 +43,7 @@ func on_enemy_added(p_model: ModelEnemy):
 	if Views.has_key(p_model):
 		return
 	
-	var view: EnemyView = kickstart(p_model, m_spawnerResource.EnemyViewScene, m_root)
+	var view: ViewEnemy = kickstart(p_model, m_spawnerResource.EnemyViewScene, m_root)
 	view.on_clicked.connect(on_clicked_received)
 	p_model.on_knocked_out.connect(on_knocked_out_received)
 	p_model.on_updated.connect(on_updated_received)
