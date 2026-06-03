@@ -1,10 +1,16 @@
 class_name _CLASS_
 extends AModel
 
-signal on_updated(p_model: _CLASS_)
+# Accesors
 
-func _init():
-	pass
+# Private
 
-# func change_something():
-# 	on_updated(self)
+# Signals
+signal updated(p_model: _CLASS_)
+
+# Virtual Implementations
+func get_runtime_group() -> ERuntimeGroup: return ERuntimeGroup.NONE
+
+# Public Functions
+
+# Private Functions

@@ -1,11 +1,14 @@
 class_name _CLASS_
 extends AController
 
-func _init():
+# ModelResources
+
+# Models
+
+# Virtual Implementations
+func on_models():
 	pass
 
-func on_initialized():
-	pass
+# Private Functions
 
-func on_terminate():
-	pass
+# Signal Implementations

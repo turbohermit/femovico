@@ -1,10 +1,26 @@
 class_name _CLASS_
 extends AView
 
-@export_category("Nodes")
-# @export var YourReferences: Node
+# Public
+@export_category("Node References")
 
-func _ready():
+# Accessors
+
+# Private
+
+# Signals
+
+# Virtual Implementations
+func on_initialized():
 	pass
 
-# func update(p_model: YourModel):
+# Public Functions
+func update(p_model: _CLASS_):
+	pass
+
+func update_tick(_p_deltaTime: float):
+	pass
+
+# Private Functions
+
+# Signal Implementations
